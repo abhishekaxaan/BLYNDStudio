@@ -8,7 +8,14 @@ export default function Footer() {
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <h3 className="text-2xl font-bold gradient-text mb-4">BLYND Studio</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <img
+                src="/blynd_logo.png"
+                alt="BLYND Studio"
+                className="h-10 w-auto logo-gradient"
+              />
+              <h3 className="text-2xl font-bold gradient-text">BLYND Studio</h3>
+            </div>
             <p className="text-secondary mb-6">
               Transforming brands through stunning design and innovative digital experiences.
             </p>

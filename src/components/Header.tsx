@@ -33,8 +33,13 @@ export default function Header() {
     >
       <div className="container mx-auto px-6 py-0">
         <div className="flex items-center justify-between">
-          <a href="#home" className="text-2xl font-bold gradient-text">
-            BLYND Studio
+          <a href="#home" className="flex items-center space-x-3 group">
+            <img
+              src="/blynd_logo.png"
+              alt="BLYND Studio"
+              className="h-8 w-auto logo-gradient transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="text-xl font-bold gradient-text hidden sm:inline">BLYND Studio</span>
           </a>
 
           <nav className="hidden md:flex items-center space-x-8">

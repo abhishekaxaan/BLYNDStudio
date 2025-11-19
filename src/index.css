@@ -269,6 +269,14 @@
   .dark ::-webkit-scrollbar-track {
     background: var(--bg-primary);
   }
+
+  .logo-gradient {
+    filter: drop-shadow(0 0 8px rgba(0, 113, 227, 0.3)) brightness(1.2) saturate(1.3);
+  }
+
+  .dark .logo-gradient {
+    filter: drop-shadow(0 0 12px rgba(191, 90, 242, 0.4)) brightness(1.1) saturate(1.2);
+  }
 }
 
 @layer utilities {
