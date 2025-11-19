@@ -67,35 +67,31 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl mx-auto">
           {showcaseImages.map((image, index) => (
             <div
               key={index}
-              className={`
-                group relative overflow-hidden rounded-3xl
-                ${index === 0 ? 'col-span-2 row-span-2' : 'row-span-1'}
-                h-56 md:h-72 ${index === 0 ? 'md:h-96' : ''}
-                shadow-lg hover:shadow-2xl transition-shadow duration-500
-              `}
+              className="group relative h-64 md:h-72 lg:h-80 rounded-2xl overflow-hidden cursor-pointer"
               style={{
                 animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
               }}
             >
-              {/* Image Container */}
+              {/* Image */}
               <img
                 src={image}
                 alt={`Showcase ${index + 1}`}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 loading="lazy"
               />
               
-              {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/30 group-hover:to-black/50 transition-all duration-700" />
+              {/* Overlay - Dark gradient on hover */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500" />
               
-              {/* Content Badge */}
-              <div className="absolute inset-0 flex items-end justify-start p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-lg px-4 py-2">
-                  <p className="text-white font-semibold text-sm">Project {index + 1}</p>
+              {/* Content appears on hover */}
+              <div className="absolute inset-0 flex flex-col items-end justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="text-right">
+                  <p className="text-white font-bold text-lg">Project</p>
+                  <p className="text-white/80 text-sm font-medium">View Work →</p>
                 </div>
               </div>
             </div>
