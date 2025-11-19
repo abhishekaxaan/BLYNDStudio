@@ -70,7 +70,7 @@ export default function Header() {
               href="#contact"
               className="hidden md:block glass-button-primary px-6 py-2.5 rounded-full text-sm font-medium"
             >
-              Book a Call
+              Contact
             </a>
 
             <button

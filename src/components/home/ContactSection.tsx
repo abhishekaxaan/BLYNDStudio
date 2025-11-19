@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import GlassCard from '../GlassCard';
@@ -11,6 +11,33 @@ export default function ContactSection() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  // Listen for email prefill from hero section
+  useEffect(() => {
+    const handleEmailPrefill = (event: Event) => {
+      const customEvent = event as CustomEvent;
+      if (customEvent.detail?.email) {
+        setFormData(prev => ({
+          ...prev,
+          email: customEvent.detail.email,
+        }));
+      }
+    };
+
+    window.addEventListener('emailPrefill', handleEmailPrefill);
+
+    // Also check sessionStorage for prefilled email
+    const prefillEmail = sessionStorage.getItem('prefillEmail');
+    if (prefillEmail) {
+      setFormData(prev => ({
+        ...prev,
+        email: prefillEmail,
+      }));
+      sessionStorage.removeItem('prefillEmail');
+    }
+
+    return () => window.removeEventListener('emailPrefill', handleEmailPrefill);
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
