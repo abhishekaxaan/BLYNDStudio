@@ -3,17 +3,8 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { label: 'Home', href: '#home' },
@@ -25,11 +16,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-panel-opaque py-4' : 'glass-panel py-6'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/5 dark:bg-black/5 border-b border-white/10"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <a href="#home" className="text-2xl font-bold gradient-text">
             BLYND Studio

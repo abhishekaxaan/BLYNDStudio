@@ -70,9 +70,9 @@ export default function HeroSection() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-max">
             {showcaseImages.map((image, index) => {
-              // Brick layout: alternate tall and regular heights
-              const isTall = index % 5 === 0 || index % 5 === 2;
-              const isWide = index % 5 === 1;
+              // Brick layout: better pattern to fill grid evenly
+              const isTall = index === 0 || index === 3 || index === 5;
+              const isWide = index === 1 || index === 4;
               
               return (
                 <div
