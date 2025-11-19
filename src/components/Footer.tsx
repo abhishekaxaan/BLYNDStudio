@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <h3 className="text-2xl font-bold gradient-text mb-4">NOVA</h3>
+            <h3 className="text-2xl font-bold gradient-text mb-4">BLYND Studio</h3>
             <p className="text-secondary mb-6">
               Transforming brands through stunning design and innovative digital experiences.
             </p>
@@ -59,7 +59,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center space-x-3 text-secondary">
                 <Mail className="w-5 h-5 flex-shrink-0" />
-                <span>hello@novaagency.com</span>
+                <span>hello@blyndstudio.com</span>
               </li>
               <li className="flex items-center space-x-3 text-secondary">
                 <Phone className="w-5 h-5 flex-shrink-0" />
@@ -75,7 +75,7 @@ export default function Footer() {
 
         <div className="border-t border-white/10 dark:border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-secondary text-sm">
-            © {currentYear} NOVA Agency. All rights reserved.
+            © {currentYear} BLYND Studio. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="nav-link text-secondary">

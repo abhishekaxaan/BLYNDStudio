@@ -44,7 +44,7 @@ export default function AboutSection() {
               to transforming brands through exceptional digital experiences.
             </p>
             <p className="text-lg text-secondary leading-relaxed mb-6">
-              Founded in 2016, NOVA has grown from a small studio to an award-winning agency
+              Founded in 2016, BLYND Studio has grown from a small studio to an award-winning agency
               trusted by leading brands worldwide. Our mission is simple: create work that not
               only looks beautiful but drives real business results.
             </p>

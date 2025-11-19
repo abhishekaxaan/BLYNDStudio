@@ -61,7 +61,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Email Us</h3>
-                <p className="text-secondary text-sm">hello@novaagency.com</p>
+                <p className="text-secondary text-sm">hello@blyndstudio.com</p>
               </div>
             </GlassCard>
 
