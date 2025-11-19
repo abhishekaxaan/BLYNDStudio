@@ -12,7 +12,7 @@ export default function Footer() {
               <img
                 src="/blynd_logo.png"
                 alt="BLYND Studio"
-                className="h-12 w-auto"
+                className="h-[120px] w-auto"
               />
             </div>
             <p className="text-secondary mb-6">

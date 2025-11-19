@@ -37,7 +37,7 @@ export default function Header() {
             <img
               src="/blynd_logo.png"
               alt="BLYND Studio"
-              className="h-10 w-auto transition-transform duration-300 group-hover:scale-110"
+              className="h-[60px] w-auto transition-transform duration-300 group-hover:scale-110"
             />
           </a>
 
