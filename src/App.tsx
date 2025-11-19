@@ -13,7 +13,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen">
+      <div className="min-h-screen overflow-x-hidden w-full">
         <Header />
         <main>
           <HeroSection />
