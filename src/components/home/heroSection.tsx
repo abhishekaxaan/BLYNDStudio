@@ -67,35 +67,48 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl mx-auto">
-          {showcaseImages.map((image, index) => (
-            <div
-              key={index}
-              className="group relative h-64 md:h-72 lg:h-80 rounded-2xl overflow-hidden cursor-pointer"
-              style={{
-                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-              }}
-            >
-              {/* Image */}
-              <img
-                src={image}
-                alt={`Showcase ${index + 1}`}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                loading="lazy"
-              />
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-max">
+            {showcaseImages.map((image, index) => {
+              // Brick layout: alternate tall and regular heights
+              const isTall = index % 5 === 0 || index % 5 === 2;
+              const isWide = index % 5 === 1;
               
-              {/* Overlay - Dark gradient on hover */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500" />
-              
-              {/* Content appears on hover */}
-              <div className="absolute inset-0 flex flex-col items-end justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="text-right">
-                  <p className="text-white font-bold text-lg">Project</p>
-                  <p className="text-white/80 text-sm font-medium">View Work →</p>
+              return (
+                <div
+                  key={index}
+                  className={`
+                    group relative overflow-hidden rounded-xl cursor-pointer
+                    ${isTall ? 'md:row-span-2' : ''}
+                    ${isWide ? 'md:col-span-2' : ''}
+                    h-72 md:h-auto
+                  `}
+                  style={{
+                    animation: `fadeInUp 0.6s ease-out ${index * 0.08}s both`,
+                  }}
+                >
+                  {/* Image */}
+                  <img
+                    src={image}
+                    alt={`Showcase ${index + 1}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  
+                  {/* Dark overlay on hover */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-500" />
+                  
+                  {/* Content on hover */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="text-center">
+                      <p className="text-white font-bold text-xl mb-2">Explore Project</p>
+                      <p className="text-white/90 text-sm">↗</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </div>
 
