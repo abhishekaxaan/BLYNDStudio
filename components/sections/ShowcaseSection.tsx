@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { LiquidGlass } from "../ui/LiquidGlass";
 
 const showcaseItems = [
     { label: "High-End UX", title: "Liquid Interfaces" },
@@ -23,14 +24,17 @@ export const ShowcaseSection = () => {
                             transition={{ delay: idx * 0.2, duration: 0.8 }}
                             className="group cursor-none"
                         >
-                            <div className="aspect-[3/4] liquid-glass rounded-[4rem] mb-10 overflow-hidden relative">
-                                <div className="absolute inset-0 bg-neutral-900 group-hover:scale-110 transition-transform duration-1000" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                            <LiquidGlass
+                                intensity={2.5}
+                                className="aspect-[3/4] rounded-[4rem] mb-10 overflow-hidden relative"
+                            >
+                                <div className="absolute inset-0 bg-neutral-950 group-hover:scale-105 transition-transform duration-1000" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-white/5 opacity-40" />
                                 <div className="absolute bottom-10 left-10">
                                     <span className="text-brand-red font-bold uppercase tracking-widest text-[10px] block mb-2">{item.label}</span>
                                     <h3 className="text-2xl font-bold tracking-tighter text-white">{item.title}</h3>
                                 </div>
-                            </div>
+                            </LiquidGlass>
                         </motion.div>
                     ))}
                 </div>

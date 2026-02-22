@@ -2,13 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { LiquidGlass } from "../ui/LiquidGlass";
 
 export const PhilosophySection = () => {
     return (
-        <section className="py-40 px-6 bg-white/[0.02]">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <section className="py-40 px-6 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
                 <div className="relative">
-                    <div className="aspect-[4/5] liquid-glass rounded-[3rem] overflow-hidden">
+                    <LiquidGlass
+                        intensity={2}
+                        className="aspect-[4/5] rounded-[3rem] overflow-hidden"
+                    >
                         {/* Visual element representing liquid glass */}
                         <div className="absolute inset-0 bg-gradient-to-br from-brand-red/20 to-transparent" />
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-white/10 blur-[80px] animate-liquid" />
@@ -17,11 +21,17 @@ export const PhilosophySection = () => {
                                 B.
                             </span>
                         </div>
-                    </div>
+                    </LiquidGlass>
                     {/* Accent element */}
-                    <div className="absolute -bottom-10 -right-10 w-40 h-40 liquid-glass rounded-full flex items-center justify-center backdrop-blur-3xl">
-                        <div className="text-brand-red font-black text-2xl">B L Y N D</div>
-                    </div>
+                    <motion.div
+                        initial={{ rotate: -10 }}
+                        whileHover={{ rotate: 0, scale: 1.1 }}
+                        className="absolute -bottom-10 -right-10 z-20"
+                    >
+                        <LiquidGlass className="w-40 h-40 rounded-full flex items-center justify-center">
+                            <div className="text-brand-red font-black text-2xl">B L Y N D</div>
+                        </LiquidGlass>
+                    </motion.div>
                 </div>
 
                 <div>

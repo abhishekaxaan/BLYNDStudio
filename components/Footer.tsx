@@ -5,8 +5,14 @@ import Link from "next/link";
 
 export const Footer = () => {
     return (
-        <footer className="w-full py-20 px-6 border-t border-white/5 bg-black">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        <footer className="w-full py-20 px-6 relative overflow-hidden bg-black/80 backdrop-blur-xl border-t border-white/5">
+            {/* Background elements for depth */}
+            <div className="absolute inset-0 z-0 opacity-20">
+                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-red/10 blur-[100px] rounded-full" />
+                <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent-blue/10 blur-[100px] rounded-full" />
+            </div>
+
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
                 <div className="col-span-1 md:col-span-2">
                     <Link href="/" className="font-bold tracking-tighter text-3xl">
                         BLYND<span className="text-brand-red">.</span>

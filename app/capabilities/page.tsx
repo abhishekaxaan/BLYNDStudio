@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { LaunchButton } from "@/components/sections/LaunchButton";
+import { LiquidGlass } from "@/components/ui/LiquidGlass";
 import { Boxes, Globe, Smartphone, Video, Palette, Target, Sword, Layout } from "lucide-react";
 
 const serviceCategories = [
@@ -75,25 +76,30 @@ export default function CapabilitiesPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="liquid-glass p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] group hover:border-brand-red/30"
+                                className="relative group"
                             >
-                                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-white/5 flex items-center justify-center mb-8 md:mb-10 group-hover:scale-110 transition-transform">
-                                    {cat.icon}
-                                </div>
-                                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 tracking-tight">{cat.title}</h2>
-                                <p className="text-neutral-500 mb-8 md:mb-10 font-light leading-relaxed text-sm md:text-base">
-                                    {cat.desc}
-                                </p>
-                                <div className="flex flex-wrap gap-2 md:gap-3">
-                                    {cat.items.map((item, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-4 md:px-5 py-1.5 md:py-2 rounded-full border border-white/5 bg-white/5 text-[8px] md:text-[9px] font-black uppercase tracking-widest text-neutral-400 group-hover:text-foreground group-hover:border-white/10 transition-all font-sans"
-                                        >
-                                            {item}
-                                        </span>
-                                    ))}
-                                </div>
+                                <LiquidGlass
+                                    intensity={1}
+                                    className="p-8 md:p-12 h-full rounded-[2.5rem] md:rounded-[3.5rem] hover:border-brand-red/30"
+                                >
+                                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-white/5 flex items-center justify-center mb-8 md:mb-10 group-hover:scale-110 transition-all">
+                                        {cat.icon}
+                                    </div>
+                                    <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 tracking-tight">{cat.title}</h2>
+                                    <p className="text-neutral-500 mb-8 md:mb-10 font-light leading-relaxed text-sm md:text-base">
+                                        {cat.desc}
+                                    </p>
+                                    <div className="flex flex-wrap gap-2 md:gap-3">
+                                        {cat.items.map((item, i) => (
+                                            <span
+                                                key={i}
+                                                className="px-4 md:px-5 py-1.5 md:py-2 rounded-full border border-white/5 bg-white/5 text-[8px] md:text-[9px] font-black uppercase tracking-widest text-neutral-400 group-hover:text-foreground group-hover:border-white/10 transition-all font-sans"
+                                            >
+                                                {item}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </LiquidGlass>
                             </motion.div>
                         ))}
                     </div>

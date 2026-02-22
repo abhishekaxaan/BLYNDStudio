@@ -6,9 +6,9 @@ import { Footer } from "@/components/Footer";
 import { LaunchButton } from "@/components/sections/LaunchButton";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { LiquidGlass } from "@/components/ui/LiquidGlass";
 
 // Assuming 12 images for now as a default sequence. 
-// The user can add more to the public/portfolio folder following the 1, 2, 3 pattern.
 const imageCount = 12;
 const images = Array.from({ length: imageCount }, (_, i) => `/portfolio/${i + 1}.jpg`);
 
@@ -23,33 +23,38 @@ const PortfolioItem = ({ src, index, onClick }: { src: string; index: number; on
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="relative aspect-[3/2] liquid-glass rounded-[2rem] overflow-hidden group cursor-pointer"
+            className="relative group cursor-pointer"
             onClick={onClick}
             onContextMenu={(e) => e.preventDefault()}
         >
-            {/* Real Image - protected */}
-            <img
-                src={src}
-                alt={`Portfolio ${index + 1}`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none"
-                draggable={false}
-                onError={() => setError(true)}
-            />
+            <LiquidGlass
+                intensity={0.5}
+                className="aspect-[3/2] rounded-[2rem] overflow-hidden relative"
+            >
+                {/* Real Image - protected */}
+                <img
+                    src={src}
+                    alt={`Portfolio ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none"
+                    draggable={false}
+                    onError={() => setError(true)}
+                />
 
-            {/* Protection Overlay */}
-            <div className="absolute inset-0 bg-transparent z-10" />
+                {/* Protection Overlay */}
+                <div className="absolute inset-0 bg-transparent z-10" />
 
-            {/* UI Overlay */}
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm z-20">
-                <ZoomIn className="text-white w-8 h-8" />
-            </div>
+                {/* UI Overlay */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm z-20">
+                    <ZoomIn className="text-white w-8 h-8" />
+                </div>
 
-            {/* Index Label */}
-            <div className="absolute bottom-6 left-6 z-30">
-                <span className="text-[10px] font-black tracking-[0.3em] uppercase text-white/50">
-                    SEQ / {String(index + 1).padStart(3, "0")}
-                </span>
-            </div>
+                {/* Index Label */}
+                <div className="absolute bottom-6 left-6 z-30">
+                    <span className="text-[10px] font-black tracking-[0.3em] uppercase text-white/50">
+                        SEQ / {String(index + 1).padStart(3, "0")}
+                    </span>
+                </div>
+            </LiquidGlass>
         </motion.div>
     );
 };
@@ -83,7 +88,7 @@ export default function Portfolio() {
     return (
         <>
             <Navbar />
-            <main className="relative min-h-screen pt-32 md:pt-48 pb-20 px-6 overflow-hidden">
+            <main className="relative min-h-screen pt-32 md:pt-48 pb-20 px-6 overflow-hidden text-foreground">
                 {/* Dynamic Background Depth */}
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 mesh-gradient-bg opacity-[0.03] dark:opacity-[0.07]" />
@@ -157,20 +162,22 @@ export default function Portfolio() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                                className="relative max-w-full max-h-full aspect-[3/2] liquid-glass rounded-[2rem] overflow-hidden"
+                                className="relative max-w-full max-h-full aspect-[3/2] rounded-[2rem] overflow-hidden"
                             >
-                                <img
-                                    src={images[selectedImage]}
-                                    alt="Zoomed View"
-                                    className="w-full h-full object-contain select-none pointer-events-none"
-                                    draggable={false}
-                                />
-                                {/* Anti-download Transparent Overlay */}
-                                <div className="absolute inset-0 bg-transparent z-[105]" />
+                                <LiquidGlass intensity={2.5} className="w-full h-full">
+                                    <img
+                                        src={images[selectedImage]}
+                                        alt="Zoomed View"
+                                        className="w-full h-full object-contain select-none pointer-events-none"
+                                        draggable={false}
+                                    />
+                                    {/* Anti-download Transparent Overlay */}
+                                    <div className="absolute inset-0 bg-transparent z-[105]" />
+                                </LiquidGlass>
                             </motion.div>
                         </div>
 
-                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30 text-[10px] uppercase font-black tracking-[0.5em]">
+                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30 text-[10px] uppercase font-black tracking-[0.5em] text-center px-6">
                             IMAGE {selectedImage + 1} / {imageCount} — BLYND STUDIO PROTECTED ASSET
                         </div>
                     </motion.div>

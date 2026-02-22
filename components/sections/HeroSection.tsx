@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { LiquidGlass } from "../ui/LiquidGlass";
 
 export const HeroSection = () => {
     return (
@@ -38,9 +39,15 @@ export const HeroSection = () => {
                     <button className="px-14 py-7 rounded-full bg-foreground text-background font-black uppercase tracking-[0.3em] text-[10px] hover:bg-brand-red hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
                         Launch Project
                     </button>
-                    <button className="px-14 py-7 rounded-full liquid-glass text-foreground font-black uppercase tracking-[0.3em] text-[10px] hover:border-brand-red/50 transition-all transform hover:scale-105 active:scale-95">
-                        View 3D Assets
-                    </button>
+                    <LiquidGlass
+                        intensity={0.8}
+                        className="rounded-full"
+                        innerClassName="overflow-hidden shadow-2xl"
+                    >
+                        <button className="px-14 py-7 text-foreground font-black uppercase tracking-[0.3em] text-[10px] hover:text-brand-red transition-all transform hover:scale-105 active:scale-95">
+                            View 3D Assets
+                        </button>
+                    </LiquidGlass>
                 </div>
             </motion.div>
 

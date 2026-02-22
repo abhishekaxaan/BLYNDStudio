@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "./providers";
+import { GlobalGlassEffects } from "../components/ui/GlobalGlassEffects";
 
 const outfit = Outfit({
     subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <body className={cn("min-h-screen bg-background text-foreground transition-all duration-700 font-sans")}>
                 <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+                    <GlobalGlassEffects />
                     <div className="grain-overlay" />
                     {children}
                 </ThemeProvider>

@@ -78,7 +78,7 @@ export const LaunchScene = () => {
 
 export const LaunchButton = () => {
     return (
-        <section className="py-32 md:py-60 px-6 relative overflow-hidden flex items-center justify-center">
+        <section className="py-32 md:py-48 px-6 relative overflow-hidden flex items-center justify-center">
             <LaunchScene />
 
             <div className="relative z-10 flex flex-col items-center">

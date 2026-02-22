@@ -15,8 +15,13 @@ const stacks = [
 
 export const TechMatrix = () => {
     return (
-        <section className="py-24 md:py-40 px-6 border-t border-black/5 dark:border-white/5 bg-neutral-50/50 dark:bg-neutral-900/20">
-            <div className="max-w-7xl mx-auto">
+        <section className="py-24 md:py-40 px-6 relative overflow-hidden">
+            {/* Mesh Gradient Background Integration */}
+            <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 mesh-gradient-bg opacity-[0.02] dark:opacity-[0.05]" />
+            </div>
+
+            <div className="max-w-7xl mx-auto relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-16 md:mb-24 gap-8 md:gap-12">
                     <div className="max-w-2xl">
                         <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-6">Our Ecosystem</span>

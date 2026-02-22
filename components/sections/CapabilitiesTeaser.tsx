@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Sword, Globe, Smartphone, Palette } from "lucide-react";
+import { LiquidGlass } from "../ui/LiquidGlass";
 
 const capabilities = [
     {
@@ -38,7 +39,7 @@ export const CapabilitiesTeaser = () => {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
                     <div className="max-w-xl">
                         <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-4">Our Expertise</span>
-                        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none">
+                        <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none uppercase">
                             Capabilities that <br /> define impact.
                         </h2>
                     </div>
@@ -52,15 +53,20 @@ export const CapabilitiesTeaser = () => {
                         <motion.div
                             key={idx}
                             whileHover={{ y: -10 }}
-                            className="liquid-glass p-10 rounded-[3rem] group"
+                            className="relative"
                         >
-                            <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:bg-foreground group-hover:text-background transition-all duration-500 ${cap.color}`}>
-                                {cap.icon}
-                            </div>
-                            <h3 className="text-xl font-bold mb-4 tracking-tight uppercase">{cap.title}</h3>
-                            <p className="text-neutral-500 text-sm leading-relaxed font-light">
-                                {cap.desc}
-                            </p>
+                            <LiquidGlass
+                                intensity={0.6}
+                                className="p-10 rounded-[3rem] group h-full"
+                            >
+                                <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:bg-foreground group-hover:text-background transition-all duration-500 ${cap.color}`}>
+                                    {cap.icon}
+                                </div>
+                                <h3 className="text-xl font-bold mb-4 tracking-tight uppercase">{cap.title}</h3>
+                                <p className="text-neutral-500 text-sm leading-relaxed font-light">
+                                    {cap.desc}
+                                </p>
+                            </LiquidGlass>
                         </motion.div>
                     ))}
                 </div>

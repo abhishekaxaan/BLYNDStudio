@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
+import { LiquidGlass } from "../ui/LiquidGlass";
 
 const faqs = [
     {
@@ -28,15 +29,21 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
 
     return (
         <div className="mb-4">
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-full text-left p-8 liquid-glass rounded-[2rem] flex items-center justify-between group transition-all"
+            <LiquidGlass
+                intensity={1.2}
+                interactive={false}
+                className="rounded-[2rem] overflow-hidden"
             >
-                <span className="text-lg md:text-xl font-bold tracking-tight pr-8">{question}</span>
-                <div className={("w-10 h-10 rounded-full flex items-center justify-center transition-colors " + (isOpen ? "bg-brand-red text-white" : "bg-white/5 text-neutral-500"))}>
-                    {isOpen ? <Minus size={18} /> : <Plus size={18} />}
-                </div>
-            </button>
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="w-full text-left p-8 flex items-center justify-between group transition-all"
+                >
+                    <span className="text-lg md:text-xl font-bold tracking-tight pr-8">{question}</span>
+                    <div className={("w-10 h-10 rounded-full flex items-center justify-center transition-colors " + (isOpen ? "bg-brand-red text-white" : "bg-white/5 text-neutral-500"))}>
+                        {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                    </div>
+                </button>
+            </LiquidGlass>
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -62,7 +69,7 @@ export const FAQSection = () => {
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-24">
                     <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-6">Knowledge Base</span>
-                    <h2 className="text-5xl md:text-7xl font-bold tracking-tighter">Liquid logic.</h2>
+                    <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase">Liquid logic.</h2>
                 </div>
 
                 <div className="space-y-6">

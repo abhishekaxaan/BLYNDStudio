@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { LiquidGlass } from "./ui/LiquidGlass";
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -33,45 +34,35 @@ export const Navbar = () => {
 
     return (
         <nav
-            className={cn(
-                "fixed inset-x-0 z-50 transition-all duration-700",
-                isScrolled ? "top-2" : "top-6"
-            )}
+            className="fixed inset-x-0 z-50 top-6"
         >
-            <div
-                className={cn(
-                    "mx-auto px-4 md:px-6 transition-all duration-700",
-                    "w-full max-w-[1800px]"
-                )}
-            >
-                <div
-                    className={cn(
-                        "liquid-glass flex items-center justify-between px-6 md:px-16 py-5 rounded-[2.5rem]",
-                        "border border-black/5 dark:border-white/5 shadow-2xl transition-all duration-700",
-                        isScrolled ? "bg-background/80 py-3" : "bg-background/40 py-6"
-                    )}
+            <div className="mx-auto px-4 md:px-6 w-full max-w-[1800px]">
+                <LiquidGlass
+                    intensity={1.2}
+                    className="rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10"
+                    innerClassName="flex items-center justify-between px-6 md:px-12 py-5"
                 >
-                    <Link href="/" className="flex items-center gap-3 group">
+                    <Link href="/" className="flex items-center gap-3 group shrink-0">
                         <div className="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white font-black text-xs liquid-glass group-hover:scale-110 transition-transform">
                             B
                         </div>
-                        <span className="font-black tracking-[-0.05em] text-xl uppercase">
+                        <span className="font-black tracking-[-0.05em] text-xl uppercase whitespace-nowrap">
                             BLYND<span className="text-brand-red">.</span>
                         </span>
                     </Link>
 
-                    {/* Desktop Nav */}
-                    <div className="hidden md:flex items-center gap-10">
-                        <div className="flex items-center gap-10 border-r border-black/5 dark:border-white/10 pr-10">
+                    {/* Desktop Nav - Pushed to the right */}
+                    <div className="hidden md:flex items-center gap-8 ml-auto">
+                        <div className="flex items-center gap-8 border-r border-white/10 pr-8">
                             {navItems.map((item) => (
                                 <Link
                                     key={item.name}
                                     href={item.href}
-                                    className="relative text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 hover:text-foreground transition-all group"
+                                    className="relative text-[10px] font-black uppercase tracking-[0.3em] text-neutral-400 hover:text-white transition-all group"
                                 >
                                     {item.name}
                                     <motion.span
-                                        className="absolute -bottom-2 left-0 w-0 h-[2px] bg-brand-red rounded-full group-hover:w-full transition-all duration-300"
+                                        className="absolute -bottom-2 left-0 w-0 h-[1.5px] bg-brand-red rounded-full group-hover:w-full transition-all duration-300"
                                         layoutId="nav-underline"
                                     />
                                 </Link>
@@ -80,47 +71,53 @@ export const Navbar = () => {
 
                         <div className="flex items-center gap-6">
                             <ThemeToggle />
-                            <button className="btn-premium bg-foreground text-background hover:bg-brand-red hover:text-white transform active:scale-95 shadow-xl !px-8 !py-3.5">
+                            <button className="btn-premium bg-white text-black hover:bg-brand-red hover:text-white transform active:scale-95 shadow-xl !px-8 !py-3">
                                 Contact
                             </button>
                         </div>
                     </div>
 
                     {/* Mobile Actions */}
-                    <div className="flex items-center gap-4 md:hidden">
+                    <div className="flex items-center gap-3 md:hidden">
                         <ThemeToggle />
                         <button
-                            className="p-3 text-neutral-500 hover:text-foreground transition-colors liquid-glass rounded-2xl"
+                            className="p-2.5 text-neutral-400 hover:text-white transition-colors liquid-glass rounded-2xl"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         >
-                            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
                         </button>
                     </div>
-                </div>
+                </LiquidGlass>
             </div>
 
             {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        className="fixed inset-x-6 top-28 bottom-6 liquid-glass rounded-[3.5rem] p-12 flex flex-col items-center justify-center gap-12 z-40 md:hidden"
+                        initial={{ opacity: 0, scale: 0.98, y: -20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.98, y: -20 }}
+                        className="fixed inset-x-6 top-32 bottom-6 z-40 md:hidden"
                     >
-                        {navItems.map((item) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className="text-4xl font-black tracking-tighter uppercase hover:text-brand-red transition-colors"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
-                        <button className="w-full py-6 rounded-3xl bg-brand-red text-white font-black text-xl uppercase tracking-[0.2em]">
-                            Contact
-                        </button>
+                        <LiquidGlass
+                            intensity={2.0}
+                            className="rounded-[3rem]"
+                            innerClassName="w-full h-full p-12 flex flex-col items-center justify-center gap-10"
+                        >
+                            {navItems.map((item) => (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    className="text-4xl font-black tracking-tighter uppercase text-white hover:text-brand-red transition-colors"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    {item.name}
+                                </Link>
+                            ))}
+                            <button className="w-full py-6 rounded-3xl bg-brand-red text-white font-black text-xl uppercase tracking-[0.2em] shadow-2xl">
+                                Contact Now
+                            </button>
+                        </LiquidGlass>
                     </motion.div>
                 )}
             </AnimatePresence>

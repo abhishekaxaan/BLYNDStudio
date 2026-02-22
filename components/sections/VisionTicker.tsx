@@ -11,8 +11,13 @@ const words = [
 
 export const VisionTicker = () => {
     return (
-        <section className="py-12 md:py-20 overflow-hidden border-y border-black/5 dark:border-white/5 relative bg-white dark:bg-black">
-            <div className="flex whitespace-nowrap">
+        <section className="py-12 md:py-20 overflow-hidden border-y border-black/5 dark:border-white/5 relative bg-white dark:bg-black/50 backdrop-blur-sm">
+            {/* Seamless Background Depth */}
+            <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 mesh-gradient-bg opacity-[0.05] dark:opacity-[0.1]" />
+            </div>
+
+            <div className="flex whitespace-nowrap relative z-10">
                 <motion.div
                     className="flex gap-8 md:gap-16 items-center pr-8 md:pr-16"
                     animate={{ x: [0, -1000] }}
@@ -25,10 +30,10 @@ export const VisionTicker = () => {
                     {/* Duplicate set for seamless loop */}
                     {[...words, ...words, ...words].map((word, idx) => (
                         <div key={idx} className="flex items-center gap-8 md:gap-16">
-                            <span className="text-2xl md:text-6xl font-black uppercase tracking-tighter text-foreground opacity-[0.03] dark:opacity-[0.05] hover:opacity-20 transition-opacity">
+                            <span className="text-2xl md:text-6xl font-black uppercase tracking-tighter text-neutral-400 dark:text-neutral-600 opacity-20 dark:opacity-30 hover:opacity-60 transition-opacity">
                                 {word}
                             </span>
-                            <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-red opacity-10" />
+                            <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-red opacity-20" />
                         </div>
                     ))}
                 </motion.div>

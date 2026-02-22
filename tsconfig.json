@@ -38,6 +38,8 @@
   ],
   "exclude": [
     "node_modules",
-    "_reference"
+    "_reference",
+    "src",
+    "vite.config.ts"
   ]
 }

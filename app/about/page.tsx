@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { LaunchButton } from "@/components/sections/LaunchButton";
+import { LiquidGlass } from "@/components/ui/LiquidGlass";
 
 export default function AboutPage() {
     return (
@@ -38,21 +39,26 @@ export default function AboutPage() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, delay: 0.2 }}
-                            className="liquid-glass p-8 md:p-12 rounded-[3rem] md:rounded-[4rem] relative overflow-hidden group"
+                            className="relative"
                         >
-                            <div className="absolute top-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-brand-red/10 blur-[80px] md:blur-[100px] rounded-full group-hover:bg-brand-red/20 transition-all duration-1000" />
-                            <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-10 tracking-tight">The Multi-Disciplinary Studio.</h2>
-                            <div className="space-y-6 md:space-y-8 text-neutral-500 font-light leading-relaxed text-base md:text-lg relative z-10">
-                                <p>
-                                    Founded as a sanctuary for high-fidelity digital art, BLYND Studio has evolved into a full-scale multi-disciplinary powerhouse. We don't limit ourselves to a single medium because visionary projects don't exist in a vacuum.
-                                </p>
-                                <p>
-                                    Whether it's a game-ready character model, a complex mobile ecosystem on FlutterFlow, or a high-performance web experience on WordPress or Webflow, we bring the same level of architectural precision to everything we build.
-                                </p>
-                                <p>
-                                    We don't manage social media—we build the brand identities and digital artifacts that make social media management unnecessary because the work speaks for itself.
-                                </p>
-                            </div>
+                            <LiquidGlass
+                                intensity={1.2}
+                                className="p-8 md:p-12 rounded-[3rem] md:rounded-[4rem] relative overflow-hidden group"
+                            >
+                                <div className="absolute top-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-brand-red/10 blur-[80px] md:blur-[100px] rounded-full group-hover:bg-brand-red/20 transition-all duration-1000" />
+                                <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-10 tracking-tight">The Multi-Disciplinary Studio.</h2>
+                                <div className="space-y-6 md:space-y-8 text-neutral-500 font-light leading-relaxed text-base md:text-lg relative z-10">
+                                    <p>
+                                        Founded as a sanctuary for high-fidelity digital art, BLYND Studio has evolved into a full-scale multi-disciplinary powerhouse. We don't limit ourselves to a single medium because visionary projects don't exist in a vacuum.
+                                    </p>
+                                    <p>
+                                        Whether it's a game-ready character model, a complex mobile ecosystem on FlutterFlow, or a high-performance web experience on WordPress or Webflow, we bring the same level of architectural precision to everything we build.
+                                    </p>
+                                    <p>
+                                        We don't manage social media—we build the brand identities and digital artifacts that make social media management unnecessary because the work speaks for itself.
+                                    </p>
+                                </div>
+                            </LiquidGlass>
                         </motion.div>
                     </div>
 
@@ -80,11 +86,16 @@ export default function AboutPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="p-8 md:p-10 liquid-glass rounded-[2.5rem] md:rounded-[3rem]"
+                                className="relative"
                             >
-                                <span className="text-brand-red font-black uppercase tracking-[0.3em] text-[9px] block mb-4">{box.tag}</span>
-                                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 tracking-tight">{box.title}</h3>
-                                <p className="text-neutral-500 font-light text-sm leading-relaxed">{box.desc}</p>
+                                <LiquidGlass
+                                    intensity={0.8}
+                                    className="p-8 md:p-10 h-full rounded-[2.5rem] md:rounded-[3rem]"
+                                >
+                                    <span className="text-brand-red font-black uppercase tracking-[0.3em] text-[9px] block mb-4">{box.tag}</span>
+                                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 tracking-tight">{box.title}</h3>
+                                    <p className="text-neutral-500 font-light text-sm leading-relaxed">{box.desc}</p>
+                                </LiquidGlass>
                             </motion.div>
                         ))}
                     </div>

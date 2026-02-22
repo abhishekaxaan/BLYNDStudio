@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { LiquidGlass } from "../ui/LiquidGlass";
 
 const steps = [
     { id: "01", title: "Conceptual Blueprint", desc: "We deconstruct your vision into technical and artistic requirements, from character arcs to user flows." },
@@ -14,21 +15,25 @@ export const ProcessSection = () => {
         <section className="py-40 px-6">
             <div className="max-w-7xl mx-auto">
                 <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-6">The Method</span>
-                <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none mb-24">A sequence of <br /> high-fidelity.</h2>
+                <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none mb-24 uppercase">A sequence of <br /> high-fidelity.</h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {steps.map((step, idx) => (
-                        <div key={idx} className="relative group">
-                            <span className="text-6xl md:text-8xl font-black text-foreground/5 absolute -top-12 -left-8 group-hover:text-brand-red/10 transition-colors duration-500 select-none font-sans italic">
+                        <LiquidGlass
+                            key={idx}
+                            intensity={0.5}
+                            className="p-8 md:p-10 rounded-[2.5rem] group relative overflow-hidden"
+                        >
+                            <span className="text-6xl md:text-8xl font-black text-brand-red/5 absolute -top-8 -left-4 group-hover:text-brand-red/10 transition-colors duration-500 select-none font-sans italic">
                                 {step.id}
                             </span>
-                            <div className="relative z-10 pt-8">
+                            <div className="relative z-10">
                                 <h3 className="text-xl font-bold mb-4 tracking-tight uppercase tracking-[0.1em]">{step.title}</h3>
                                 <p className="text-neutral-500 text-sm leading-relaxed font-light">
                                     {step.desc}
                                 </p>
                             </div>
-                        </div>
+                        </LiquidGlass>
                     ))}
                 </div>
             </div>
