@@ -13,8 +13,11 @@ interface LiquidGlassProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Glassmorphism Component — Pure CSS backdrop-filter: blur()
- * Light mode only. The `intensity` prop scales blur radius (base 12px).
+ * Glassmorphism Component — Premium glass effect with:
+ * - Angled shadow (bottom-right, not generic top-to-bottom)
+ * - Glossy corner highlights (top-left and bottom-right)
+ * - Interactive specular highlight that follows the cursor
+ * - Crystal rim highlight on top and left edges
  */
 export const LiquidGlass = ({
     children,
@@ -63,7 +66,7 @@ export const LiquidGlass = ({
             style={style}
             {...props}
         >
-            {/* Glass Layer */}
+            {/* Glass Layer — backdrop blur + semi-transparent bg */}
             <div
                 className="absolute inset-0 rounded-[inherit] pointer-events-none"
                 style={{
@@ -71,23 +74,42 @@ export const LiquidGlass = ({
                     border: '0.5px solid var(--glass-border)',
                     backdropFilter: `blur(${blurRadius}px) saturate(180%)`,
                     WebkitBackdropFilter: `blur(${blurRadius}px) saturate(180%)`,
+                    /* Angled shadow — offset bottom-right for depth, not generic centered */
+                    boxShadow: '4px 8px 24px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)',
                 }}
             />
 
-            {/* Specular Highlight */}
+            {/* Interactive Specular Highlight — follows cursor */}
             <motion.div
                 style={{
                     background: useTransform(
                         [glossX, glossY],
-                        ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(255,255,255,0.15), transparent 60%)`
+                        ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(255,255,255,0.2), transparent 60%)`
                     )
                 }}
-                className="absolute inset-0 rounded-[inherit] opacity-30 mix-blend-overlay pointer-events-none"
+                className="absolute inset-0 rounded-[inherit] opacity-40 mix-blend-overlay pointer-events-none"
             />
 
-            {/* Crystal Rim */}
+            {/* Glossy Corner Highlights — top-left and bottom-right shines */}
+            <div className="absolute inset-0 rounded-[inherit] pointer-events-none overflow-hidden">
+                {/* Top-left glossy corner */}
+                <div
+                    className="absolute -top-[20%] -left-[20%] w-[50%] h-[50%] rounded-full opacity-[0.12]"
+                    style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.9), transparent 70%)' }}
+                />
+                {/* Bottom-right subtle glow */}
+                <div
+                    className="absolute -bottom-[15%] -right-[15%] w-[40%] h-[40%] rounded-full opacity-[0.06]"
+                    style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.8), transparent 70%)' }}
+                />
+            </div>
+
+            {/* Crystal Rim — top edge and left edge shine for 3D glass feel */}
             <div className="absolute inset-0 rounded-[inherit] pointer-events-none">
-                <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                {/* Top rim */}
+                <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                {/* Left rim */}
+                <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/30 via-transparent to-transparent" />
             </div>
 
             {/* Content */}

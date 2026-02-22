@@ -43,7 +43,7 @@ export default function AboutPage() {
                         >
                             <LiquidGlass
                                 intensity={1.2}
-                                className="p-8 md:p-12 rounded-[3rem] md:rounded-[4rem] relative overflow-hidden group"
+                                className="p-8 md:p-12 rounded-[3rem] md:rounded-[4rem] relative overflow-hidden group border border-black/5 shadow-lg"
                             >
                                 <div className="absolute top-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-brand-red/10 blur-[80px] md:blur-[100px] rounded-full group-hover:bg-brand-red/20 transition-all duration-1000" />
                                 <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-10 tracking-tight">The Multi-Disciplinary Studio.</h2>
