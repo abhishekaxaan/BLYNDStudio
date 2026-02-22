@@ -112,7 +112,7 @@ export const Navbar = () => {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-4xl font-black tracking-tighter uppercase italic hover:text-brand-red transition-colors"
+                                className="text-4xl font-black tracking-tighter uppercase hover:text-brand-red transition-colors"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 {item.name}
