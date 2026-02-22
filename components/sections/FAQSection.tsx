@@ -32,7 +32,7 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
             <LiquidGlass
                 intensity={1.2}
                 interactive={true}
-                className="rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-black/5 shadow-lg"
+                className="rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-lg"
             >
                 <button
                     onClick={() => setIsOpen(!isOpen)}

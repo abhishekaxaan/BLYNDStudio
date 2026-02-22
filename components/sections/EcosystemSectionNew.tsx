@@ -16,13 +16,19 @@ const tools = [
 
 export const EcosystemSectionNew = () => {
     return (
-        <section className="py-24 md:py-48 px-6 relative overflow-hidden bg-background text-foreground">
-            {/* Glow orbs — w-0 h-0 so only the box-shadow is visible */}
+        <section className="py-24 md:py-48 px-6 relative">
+            {/* Glow orbs */}
             <div className="absolute top-1/4 right-[10%] w-0 h-0 rounded-full bg-transparent pointer-events-none" style={{ boxShadow: "0 0 200px 120px rgba(121,40,202,0.08)" }} />
             <div className="absolute bottom-1/4 left-[5%] w-0 h-0 rounded-full bg-transparent pointer-events-none" style={{ boxShadow: "0 0 180px 100px rgba(0,112,243,0.08)" }} />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8"
+                >
                     <div className="max-w-2xl">
                         <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-6">Future Stack</span>
                         <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none uppercase">
@@ -32,20 +38,20 @@ export const EcosystemSectionNew = () => {
                     <p className="text-neutral-500 max-w-sm mb-4 leading-relaxed font-light text-base md:text-lg">
                         A precise selection of state-of-the-art tools and frameworks used to build visionary artifacts.
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                     {tools.map((tool, idx) => (
                         <motion.div
                             key={idx}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
+                            viewport={{ once: true, margin: "-80px" }}
+                            transition={{ duration: 0.8, delay: idx * 0.12, ease: "easeOut" }}
                         >
                             <LiquidGlass
                                 intensity={1.2}
-                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] group h-full shadow-lg border border-black/5"
+                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] group h-full shadow-lg"
                             >
                                 <div className="flex flex-col items-start gap-4 md:gap-6">
                                     <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center ${tool.iconColor} group-hover:scale-110 transition-all duration-500`}>

@@ -10,7 +10,7 @@ import { ShowcaseSection } from "@/components/sections/ShowcaseSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { TechMatrix } from "@/components/sections/TechMatrix";
-import { EcosystemSectionNew } from "@/components/sections/EcosystemSectionNew";
+
 import { LaunchButton } from "@/components/sections/LaunchButton";
 import { VisionTicker } from "@/components/sections/VisionTicker";
 import { VisionTickerAlt1 } from "@/components/sections/VisionTickerAlt1";
@@ -27,7 +27,7 @@ export default function Home() {
                 <TechMatrix />
                 {/* Marquee Alt 1: Stacked split rows with accent colors */}
                 <VisionTickerAlt1 />
-                <EcosystemSectionNew />
+
                 <PhilosophySection />
                 <ResultsSection />
                 <ShowcaseSection />

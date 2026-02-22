@@ -41,12 +41,16 @@ export const TechMatrix = () => {
                     {stacks.map((stack, idx) => (
                         <motion.div
                             key={idx}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             whileHover={{ y: -8 }}
+                            viewport={{ once: true, margin: "-80px" }}
+                            transition={{ duration: 0.8, delay: idx * 0.12, ease: "easeOut" }}
                             className="h-full group"
                         >
                             <LiquidGlass
                                 intensity={1.2}
-                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] border border-black/5 shadow-lg h-full"
+                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] shadow-lg h-full"
                                 innerClassName="flex flex-col items-start gap-4 md:gap-6"
                             >
                                 <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-br ${stack.gradient} flex items-center justify-center ${stack.iconColor} group-hover:scale-110 transition-all duration-500`}>

@@ -71,7 +71,6 @@ export const LiquidGlass = ({
                 className="absolute inset-0 rounded-[inherit] pointer-events-none"
                 style={{
                     backgroundColor: 'var(--glass-bg)',
-                    border: '0.5px solid var(--glass-border)',
                     backdropFilter: `blur(${blurRadius}px) saturate(180%)`,
                     WebkitBackdropFilter: `blur(${blurRadius}px) saturate(180%)`,
                     /* Angled shadow — offset bottom-right for depth, not generic centered */

@@ -11,7 +11,7 @@ export const PhilosophySection = () => {
                 <div className="relative">
                     <LiquidGlass
                         intensity={1.2}
-                        className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-lg border border-black/5"
+                        className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-lg"
                     >
                         {/* Visual element representing liquid glass */}
                         <div className="absolute inset-0 bg-gradient-to-br from-brand-red/10 via-brand-red/5 to-transparent mix-blend-overlay" />

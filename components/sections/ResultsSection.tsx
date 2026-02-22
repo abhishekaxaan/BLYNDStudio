@@ -29,10 +29,10 @@ export const ResultsSection = () => {
                         {metrics.map((m, idx) => (
                             <motion.div
                                 key={idx}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-80px" }}
+                                transition={{ duration: 0.8, delay: idx * 0.12, ease: "easeOut" }}
                                 className="p-8 border-l border-background/10 hover:border-brand-red transition-all duration-500"
                             >
                                 <div className="text-4xl md:text-6xl font-black tracking-tighter text-brand-red mb-2">{m.value}</div>

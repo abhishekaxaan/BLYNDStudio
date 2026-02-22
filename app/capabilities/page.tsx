@@ -80,7 +80,7 @@ export default function CapabilitiesPage() {
                             >
                                 <LiquidGlass
                                     intensity={1}
-                                    className="p-8 md:p-12 h-full rounded-[2.5rem] md:rounded-[3.5rem] border border-black/5 shadow-lg hover:border-brand-red/20 transition-colors"
+                                    className="p-8 md:p-12 h-full rounded-[2.5rem] md:rounded-[3.5rem] shadow-lg hover:border-brand-red/20 transition-colors"
                                 >
                                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-white/5 flex items-center justify-center mb-8 md:mb-10 group-hover:scale-110 transition-all">
                                         {cat.icon}

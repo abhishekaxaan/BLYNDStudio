@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { LiquidGlass } from "./ui/LiquidGlass";
@@ -16,6 +17,7 @@ const navItems = [
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -49,13 +51,10 @@ export const Navbar = () => {
                                 <Link
                                     key={item.name}
                                     href={item.href}
-                                    className="relative text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 hover:text-brand-red transition-all group"
+                                    className={`relative text-[10px] font-black uppercase tracking-[0.3em] transition-colors duration-300 ${pathname === item.href ? "text-brand-red" : "text-neutral-400 hover:text-black"
+                                        }`}
                                 >
                                     {item.name}
-                                    <motion.span
-                                        className="absolute -bottom-2 left-0 w-0 h-[1.5px] bg-brand-red rounded-full group-hover:w-full transition-all duration-300"
-                                        layoutId="nav-underline"
-                                    />
                                 </Link>
                             ))}
                         </div>

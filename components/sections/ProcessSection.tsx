@@ -28,12 +28,16 @@ export const ProcessSection = () => {
                         <div key={idx} className="relative group">
 
                             <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 whileHover={{ y: -10 }}
+                                viewport={{ once: true, margin: "-80px" }}
+                                transition={{ duration: 0.8, delay: idx * 0.12, ease: "easeOut" }}
                                 className="h-full"
                             >
                                 <LiquidGlass
                                     intensity={1.2}
-                                    className="p-8 md:p-10 rounded-[3rem] group h-full border border-black/5 shadow-lg"
+                                    className="p-8 md:p-10 rounded-[3rem] group h-full shadow-lg"
                                     innerClassName="flex flex-col gap-4 md:gap-6"
                                 >
                                     <span className="text-4xl font-black text-brand-red font-sans italic opacity-50">

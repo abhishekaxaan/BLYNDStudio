@@ -60,12 +60,16 @@ export const CapabilitiesTeaser = () => {
                     {capabilities.map((cap, idx) => (
                         <motion.div
                             key={idx}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             whileHover={{ y: -10 }}
+                            viewport={{ once: true, margin: "-80px" }}
+                            transition={{ duration: 0.8, delay: idx * 0.12, ease: "easeOut" }}
                             className="relative"
                         >
                             <LiquidGlass
                                 intensity={1.2}
-                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] border border-black/5 shadow-lg h-full"
+                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] shadow-lg h-full"
                                 innerClassName="flex flex-col gap-4 md:gap-6"
                             >
                                 <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br ${cap.gradient} flex items-center justify-center ${cap.iconColor} group-hover:scale-110 transition-all duration-500`}>

@@ -18,15 +18,15 @@ export const ShowcaseSection = () => {
                     {showcaseItems.map((item, idx) => (
                         <motion.div
                             key={idx}
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.2, duration: 0.8 }}
+                            viewport={{ once: true, margin: "-80px" }}
+                            transition={{ duration: 0.8, delay: idx * 0.12, ease: "easeOut" }}
                             className="group"
                         >
                             <LiquidGlass
                                 intensity={1.2}
-                                className="aspect-[3/4] rounded-[3rem] mb-10 overflow-hidden relative shadow-lg border border-black/5"
+                                className="aspect-[3/4] rounded-[3rem] mb-10 overflow-hidden relative shadow-lg"
                             >
                                 <div className="absolute inset-0 bg-neutral-950 group-hover:scale-105 transition-transform duration-1000" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-white/5 opacity-40" />
