@@ -15,8 +15,8 @@ export default function AboutPage() {
                 {/* Dynamic Background Depth */}
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 mesh-gradient-bg opacity-[0.03] dark:opacity-[0.07]" />
-                    <div className="absolute bottom-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-accent-purple/5 blur-[80px] md:blur-[120px] rounded-full animate-liquid opacity-20" />
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] md:bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+                    <div className="absolute bottom-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-foreground/5 blur-[80px] md:blur-[120px] rounded-full animate-liquid opacity-10" />
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:50px_50px] md:bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)]" />
                 </div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
@@ -100,7 +100,7 @@ export default function AboutPage() {
                         ))}
                     </div>
 
-                    <div className="border-t border-black/5 dark:border-white/5 pt-20 md:pt-32 mb-20 md:mb-32">
+                    <div className="border-t border-black/5 pt-20 md:pt-32 mb-20 md:mb-32">
                         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 md:gap-20">
                             <div className="max-w-xl">
                                 <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-6">The Studio Ecosystem</span>

@@ -4,14 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
 import { LiquidGlass } from "./ui/LiquidGlass";
-
-function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs));
-}
 
 const navItems = [
     { name: "Home", href: "/" },
@@ -33,17 +26,15 @@ export const Navbar = () => {
     }, []);
 
     return (
-        <nav
-            className="fixed inset-x-0 z-50 top-6"
-        >
+        <nav className="fixed inset-x-0 z-50 top-6">
             <div className="mx-auto px-4 md:px-6 w-full max-w-[1800px]">
                 <LiquidGlass
-                    intensity={1.2}
-                    className="rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10"
-                    innerClassName="flex items-center justify-between px-6 md:px-12 py-5"
+                    intensity={3}
+                    className="rounded-[2.5rem] shadow-lg border border-black/5 bg-white/200 backdrop-blur-sm"
+                    innerClassName="flex items-center justify-between px-6 md:px-12 py-5 rounded-[2.5rem] relative z-20"
                 >
                     <Link href="/" className="flex items-center gap-3 group shrink-0">
-                        <div className="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white font-black text-xs liquid-glass group-hover:scale-110 transition-transform">
+                        <div className="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white font-black text-xs group-hover:scale-110 transition-transform">
                             B
                         </div>
                         <span className="font-black tracking-[-0.05em] text-xl uppercase whitespace-nowrap">
@@ -51,14 +42,14 @@ export const Navbar = () => {
                         </span>
                     </Link>
 
-                    {/* Desktop Nav - Pushed to the right */}
+                    {/* Desktop Nav */}
                     <div className="hidden md:flex items-center gap-8 ml-auto">
-                        <div className="flex items-center gap-8 border-r border-white/10 pr-8">
+                        <div className="flex items-center gap-8 border-r border-black/5 pr-8">
                             {navItems.map((item) => (
                                 <Link
                                     key={item.name}
                                     href={item.href}
-                                    className="relative text-[10px] font-black uppercase tracking-[0.3em] text-neutral-400 hover:text-white transition-all group"
+                                    className="relative text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 hover:text-brand-red transition-all group"
                                 >
                                     {item.name}
                                     <motion.span
@@ -69,19 +60,15 @@ export const Navbar = () => {
                             ))}
                         </div>
 
-                        <div className="flex items-center gap-6">
-                            <ThemeToggle />
-                            <button className="btn-premium bg-white text-black hover:bg-brand-red hover:text-white transform active:scale-95 shadow-xl !px-8 !py-3">
-                                Contact
-                            </button>
-                        </div>
+                        <button className="btn-premium bg-white/200 backdrop-blur-sm text-black hover:bg-brand-red hover:text-white transform active:scale-95 shadow-xl border border-black/5">
+                            Contact
+                        </button>
                     </div>
 
                     {/* Mobile Actions */}
                     <div className="flex items-center gap-3 md:hidden">
-                        <ThemeToggle />
                         <button
-                            className="p-2.5 text-neutral-400 hover:text-white transition-colors liquid-glass rounded-2xl"
+                            className="p-2.5 text-neutral-500 hover:text-brand-red active:text-brand-red transition-colors rounded-2xl active:scale-95"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         >
                             {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -101,20 +88,20 @@ export const Navbar = () => {
                     >
                         <LiquidGlass
                             intensity={2.0}
-                            className="rounded-[3rem]"
+                            className="rounded-[3rem] bg-white/200 backdrop-blur-sm border border-black/5 shadow-2xl"
                             innerClassName="w-full h-full p-12 flex flex-col items-center justify-center gap-10"
                         >
                             {navItems.map((item) => (
                                 <Link
                                     key={item.name}
                                     href={item.href}
-                                    className="text-4xl font-black tracking-tighter uppercase text-white hover:text-brand-red transition-colors"
+                                    className="text-4xl font-black tracking-tighter uppercase text-black hover:text-brand-red active:text-brand-red transition-colors"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {item.name}
                                 </Link>
                             ))}
-                            <button className="w-full py-6 rounded-3xl bg-brand-red text-white font-black text-xl uppercase tracking-[0.2em] shadow-2xl">
+                            <button className="w-full py-6 rounded-3xl bg-white/200 backdrop-blur-sm text-black font-black text-xl uppercase tracking-[0.2em] shadow-2xl active:scale-95 hover:bg-brand-red hover:text-white transition-all border border-black/5">
                                 Contact Now
                             </button>
                         </LiquidGlass>

@@ -2,21 +2,11 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 
-import { ThemeProvider } from "./providers";
-import { GlobalGlassEffects } from "../components/ui/GlobalGlassEffects";
-
 const outfit = Outfit({
     subsets: ["latin"],
     weight: ["300", "400", "500", "600", "700"],
     variable: "--font-outfit",
 });
-
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs));
-}
 
 export const metadata: Metadata = {
     title: "BLYND Studio | Design & Marketing Excellence",
@@ -29,13 +19,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <body className={cn("min-h-screen bg-background text-foreground transition-all duration-700 font-sans")}>
-                <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-                    <GlobalGlassEffects />
-                    <div className="grain-overlay" />
-                    {children}
-                </ThemeProvider>
+        <html lang="en">
+            <body className="min-h-screen bg-white text-black font-sans">
+                <div className="grain-overlay" />
+                {children}
             </body>
         </html>
     );

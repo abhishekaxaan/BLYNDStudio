@@ -91,22 +91,22 @@ export default function Portfolio() {
             <main className="relative min-h-screen pt-32 md:pt-48 pb-20 px-6 overflow-hidden text-foreground">
                 {/* Dynamic Background Depth */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 mesh-gradient-bg opacity-[0.03] dark:opacity-[0.07]" />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-accent-blue/5 blur-[100px] md:blur-[140px] rounded-full animate-liquid opacity-20" />
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] md:bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+                    <div className="absolute inset-0 opacity-[0.03]" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-foreground/5 blur-[100px] md:blur-[140px] rounded-full animate-liquid opacity-10" />
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:50px_50px] md:bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)]" />
                 </div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-12 md:mb-20 text-center"
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="mb-12 md:mb-20 text-left"
                     >
                         <span className="text-brand-red font-bold uppercase tracking-widest text-[10px] block mb-4">The Work</span>
-                        <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-none mb-6 md:mb-8 uppercase px-4">
+                        <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-none mb-6 md:mb-8 uppercase">
                             Visual <br className="hidden md:block" /> Chronicle.
                         </h1>
-                        <p className="max-w-xl mx-auto text-neutral-500 font-light text-sm md:text-base px-6">
+                        <p className="max-w-xl text-neutral-500 font-light text-base md:text-lg">
                             A sequential gallery of our landscape explorations. Protected and preserved in high-fidelity.
                         </p>
                     </motion.div>

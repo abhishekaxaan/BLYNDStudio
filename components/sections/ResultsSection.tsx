@@ -12,20 +12,20 @@ const metrics = [
 
 export const ResultsSection = () => {
     return (
-        <section className="py-40 px-6 bg-foreground text-background overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-accent-blue/5 blur-[200px] rounded-full" />
+        <section className="py-24 md:py-40 px-6 bg-foreground text-background overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-background/5 blur-[200px] rounded-full" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center mb-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center mb-16 md:mb-32">
                     <div>
-                        <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-none mb-12 uppercase italic">
+                        <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-none mb-8 md:mb-12 uppercase italic">
                             Strategic <br /> Results.
                         </h2>
-                        <p className="text-background/60 text-xl font-light leading-relaxed max-w-md">
+                        <p className="text-background/60 text-lg md:text-xl font-light leading-relaxed max-w-md">
                             We measure success by the performance of our artifacts in the wild. From game asset optimization to mobile app retention—results are our only metric.
                         </p>
                     </div>
-                    <div className="grid grid-cols-2 gap-8 md:gap-12">
+                    <div className="grid grid-cols-2 gap-6 md:gap-12">
                         {metrics.map((m, idx) => (
                             <motion.div
                                 key={idx}

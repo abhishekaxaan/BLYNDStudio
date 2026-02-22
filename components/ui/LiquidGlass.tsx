@@ -1,21 +1,20 @@
 "use client";
 
-import React, { useRef, useMemo } from "react";
+import React, { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { cn } from "../../lib/utils";
 
-interface LiquidGlassProps {
+interface LiquidGlassProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
-    className?: string; // Standard React className (Position, Sizing, Rounding)
-    innerClassName?: string; // Layout classes for the content (Flex, Padding)
+    className?: string;
+    innerClassName?: string;
     intensity?: number;
     interactive?: boolean;
-    lowPower?: boolean; // If true, skips SVG refraction for standard CSS blur
 }
 
 /**
- * High-Fidelity Sculptural Glass Component (OPTIMIZED)
- * References global SVG filters to minimize GPU load.
+ * Glassmorphism Component — Pure CSS backdrop-filter: blur()
+ * Light mode only. The `intensity` prop scales blur radius (base 12px).
  */
 export const LiquidGlass = ({
     children,
@@ -23,11 +22,11 @@ export const LiquidGlass = ({
     innerClassName,
     intensity = 1,
     interactive = true,
-    lowPower = false
+    style,
+    ...props
 }: LiquidGlassProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Mouse positions for light reaction
     const mouseX = useMotionValue(0.5);
     const mouseY = useMotionValue(0.5);
 
@@ -38,10 +37,8 @@ export const LiquidGlass = ({
     const handlePointerMove = (e: React.PointerEvent) => {
         if (!interactive || !containerRef.current) return;
         const rect = containerRef.current.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
-        mouseX.set(x);
-        mouseY.set(y);
+        mouseX.set((e.clientX - rect.left) / rect.width);
+        mouseY.set((e.clientY - rect.top) / rect.height);
     };
 
     const handlePointerLeave = () => {
@@ -49,12 +46,10 @@ export const LiquidGlass = ({
         mouseY.set(0.5);
     };
 
-    // Specular highlight positions
     const glossX = useTransform(springX, [0, 1], ["5%", "95%"]);
     const glossY = useTransform(springY, [0, 1], ["0%", "40%"]);
 
-    // Use global filter ID
-    const filterId = intensity > 1.5 ? 'glass-refraction-sculptural' : 'glass-refraction-soft';
+    const blurRadius = Math.round(12 * intensity);
 
     return (
         <div
@@ -63,51 +58,39 @@ export const LiquidGlass = ({
             onPointerLeave={handlePointerLeave}
             className={cn(
                 "relative group transition-all duration-700",
-                "before:absolute before:inset-0 before:rounded-[inherit] before:shadow-[0_40px_100px_-20px_rgba(239,68,68,0.15)] dark:before:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]",
                 className
             )}
+            style={style}
+            {...props}
         >
-            {/* Glass Layers Stack */}
-            <div className="absolute inset-0 rounded-[inherit] overflow-hidden pointer-events-none">
-                {/* 1. Base Glass & Intense Refraction */}
-                <div
-                    className={cn(
-                        "absolute inset-0 rounded-[inherit]",
-                        "bg-brand-red/[0.04] dark:bg-white/[0.03]",
-                        "border border-white/20 dark:border-white/10"
-                    )}
-                    style={{
-                        backdropFilter: lowPower
-                            ? `blur(40px) saturate(180%) brightness(1.1)`
-                            : `blur(60px) saturate(220%) brightness(1.2) contrast(1.05) url(#${filterId})`,
-                    } as any}
-                />
+            {/* Glass Layer */}
+            <div
+                className="absolute inset-0 rounded-[inherit] pointer-events-none"
+                style={{
+                    backgroundColor: 'var(--glass-bg)',
+                    border: '0.5px solid var(--glass-border)',
+                    backdropFilter: `blur(${blurRadius}px) saturate(180%)`,
+                    WebkitBackdropFilter: `blur(${blurRadius}px) saturate(180%)`,
+                }}
+            />
 
-                {/* 2. SPECULAR BLOOM */}
-                <motion.div
-                    style={{
-                        background: useTransform(
-                            [glossX, glossY],
-                            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(255,255,255,0.4), transparent 60%)`
-                        )
-                    }}
-                    className="absolute inset-0 rounded-[inherit] opacity-100 dark:opacity-50 mix-blend-overlay pointer-events-none"
-                />
+            {/* Specular Highlight */}
+            <motion.div
+                style={{
+                    background: useTransform(
+                        [glossX, glossY],
+                        ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(255,255,255,0.15), transparent 60%)`
+                    )
+                }}
+                className="absolute inset-0 rounded-[inherit] opacity-30 mix-blend-overlay pointer-events-none"
+            />
 
-                {/* 3. CRYSTAL RIM */}
-                <div className="absolute inset-0 rounded-[inherit] pointer-events-none">
-                    <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-                    <div className="absolute inset-0 rounded-[inherit] border-t border-l border-white/10" />
-                </div>
-
-                {/* 4. PRISMATIC DEPTH (Subtle Red Tint) */}
-                <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-br from-brand-red/5 via-transparent to-white/5 opacity-40 mix-blend-overlay" />
-
-                {/* 5. MATERIAL NOISE */}
-                <div className="absolute inset-0 rounded-[inherit] opacity-[0.04] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+            {/* Crystal Rim */}
+            <div className="absolute inset-0 rounded-[inherit] pointer-events-none">
+                <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             </div>
 
-            {/* Content Layer */}
+            {/* Content */}
             <div className={cn("relative z-10 h-full w-full rounded-[inherit]", innerClassName)}>
                 {children}
             </div>

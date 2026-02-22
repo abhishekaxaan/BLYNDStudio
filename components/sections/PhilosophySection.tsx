@@ -10,8 +10,8 @@ export const PhilosophySection = () => {
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
                 <div className="relative">
                     <LiquidGlass
-                        intensity={2}
-                        className="aspect-[4/5] rounded-[3rem] overflow-hidden"
+                        intensity={1.2}
+                        className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-lg border border-black/5"
                     >
                         {/* Visual element representing liquid glass */}
                         <div className="absolute inset-0 bg-gradient-to-br from-brand-red/10 via-brand-red/5 to-transparent mix-blend-overlay" />

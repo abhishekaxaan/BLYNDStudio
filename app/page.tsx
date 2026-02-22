@@ -9,9 +9,12 @@ import { ResultsSection } from "@/components/sections/ResultsSection";
 import { ShowcaseSection } from "@/components/sections/ShowcaseSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { FAQSection } from "@/components/sections/FAQSection";
+import { TechMatrix } from "@/components/sections/TechMatrix";
+import { EcosystemSectionNew } from "@/components/sections/EcosystemSectionNew";
 import { LaunchButton } from "@/components/sections/LaunchButton";
 import { VisionTicker } from "@/components/sections/VisionTicker";
-import { TechMatrix } from "@/components/sections/TechMatrix";
+import { VisionTickerAlt1 } from "@/components/sections/VisionTickerAlt1";
+import { VisionTickerAlt2 } from "@/components/sections/VisionTickerAlt2";
 
 export default function Home() {
     return (
@@ -22,9 +25,14 @@ export default function Home() {
                 <VisionTicker />
                 <CapabilitiesTeaser />
                 <TechMatrix />
+                {/* Marquee Alt 1: Stacked split rows with accent colors */}
+                <VisionTickerAlt1 />
+                <EcosystemSectionNew />
                 <PhilosophySection />
                 <ResultsSection />
                 <ShowcaseSection />
+                {/* Marquee Alt 2: Giant gradient & outlined words */}
+                <VisionTickerAlt2 />
                 <ProcessSection />
                 <FAQSection />
                 <LaunchButton />

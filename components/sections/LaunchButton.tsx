@@ -54,7 +54,7 @@ const RotatingRing = () => {
                     <FloatingElement
                         key={i}
                         position={[x, y, 0]}
-                        color={i % 2 === 0 ? "#ffffff" : "#0070f3"}
+                        color={i % 2 === 0 ? "#ffffff" : "#333333"}
                         speed={0.4 + Math.random() * 0.4}
                         distort={0.1 + Math.random() * 0.2}
                     />
@@ -79,7 +79,7 @@ export const LaunchScene = () => {
 
 export const LaunchButton = () => {
     return (
-        <section className="py-32 md:py-48 px-6 relative overflow-hidden flex items-center justify-center">
+        <section className="py-16 md:py-24 px-6 relative overflow-hidden flex items-center justify-center">
             <LaunchScene />
 
             <div className="relative z-10 flex flex-col items-center">
@@ -91,17 +91,19 @@ export const LaunchButton = () => {
                 >
                     <Link
                         href="/contact"
-                        className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-brand-red text-white font-black uppercase tracking-[0.3em] text-xs md:text-sm hover:bg-brand-red/90 transition-all duration-700 shadow-[0_40px_100px_rgba(239,68,68,0.4)] flex items-center justify-center group transform active:scale-95 border border-white/10 relative overflow-hidden"
+                        className="w-56 h-56 md:w-64 md:h-64 rounded-full bg-black text-white font-black uppercase tracking-[0.3em] text-xs md:text-sm transition-all duration-700 shadow-lg flex items-center justify-center group transform active:scale-95 border border-white/10 relative overflow-hidden hover:shadow-[0_0_60px_rgba(239,68,68,0.3)] active:shadow-[0_0_60px_rgba(239,68,68,0.5)]"
                     >
-                        <span className="relative z-10 text-center">Ready to <br /> <span className="text-3xl md:text-5xl block mt-2">Launch?</span></span>
+                        {/* Hover/Tap gradient overlay */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-brand-red via-accent-purple to-accent-blue opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500" />
+                        <span className="relative z-10 text-center">Ready to <br /> <span className="text-2xl md:text-4xl block mt-2">Launch?</span></span>
 
                         {/* Subtle orbital ring */}
                         <div className="absolute inset-0 border border-white/5 rounded-full animate-[spin_20s_linear_infinite]" />
                     </Link>
 
-                    {/* Badge moved to top-center above button to avoid layout break */}
+                    {/* Badge - Now Neutral */}
                     <motion.div
-                        className="absolute -top-12 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-accent-blue text-white text-[9px] font-black uppercase tracking-widest shadow-xl whitespace-nowrap"
+                        className="absolute -top-12 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-neutral-900 text-white text-[9px] font-black uppercase tracking-widest shadow-xl whitespace-nowrap border border-white/10"
                         animate={{ y: [0, -5, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     >

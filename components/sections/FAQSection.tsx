@@ -31,16 +31,16 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
         <div className="mb-4">
             <LiquidGlass
                 intensity={1.2}
-                interactive={false}
-                className="rounded-[2rem] overflow-hidden"
+                interactive={true}
+                className="rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-black/5 shadow-lg"
             >
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="w-full text-left p-8 flex items-center justify-between group transition-all"
+                    className="w-full text-left p-6 md:p-8 flex items-center justify-between group transition-all"
                 >
-                    <span className="text-lg md:text-xl font-bold tracking-tight pr-8">{question}</span>
-                    <div className={("w-10 h-10 rounded-full flex items-center justify-center transition-colors " + (isOpen ? "bg-brand-red text-white" : "bg-white/5 text-neutral-500"))}>
-                        {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                    <span className="text-base md:text-xl font-bold tracking-tight pr-4 md:pr-8">{question}</span>
+                    <div className={"w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-colors flex-shrink-0 " + (isOpen ? "bg-brand-red text-white" : "bg-white/5 text-neutral-500")}>
+                        {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                     </div>
                 </button>
             </LiquidGlass>
@@ -53,7 +53,7 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
                         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                     >
-                        <div className="p-10 text-neutral-500 font-light leading-relaxed text-lg italic">
+                        <div className="p-6 md:p-10 text-neutral-500 font-light leading-relaxed text-base md:text-lg italic">
                             {answer}
                         </div>
                     </motion.div>
@@ -65,7 +65,7 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
 
 export const FAQSection = () => {
     return (
-        <section className="py-40 px-6">
+        <section className="py-24 md:py-32 px-6">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-24">
                     <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-6">Knowledge Base</span>

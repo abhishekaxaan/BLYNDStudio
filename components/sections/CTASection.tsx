@@ -17,7 +17,7 @@ export const CTASection = () => {
                     Start your transformation journey with BLYND Studio today. We bring visions to life through fluid design.
                 </p>
 
-                <button className="px-16 py-8 rounded-[2rem] bg-foreground text-background font-black uppercase tracking-[0.2em] text-sm hover:bg-brand-red hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-2xl">
+                <button className="px-12 py-6 rounded-[2rem] bg-black text-white font-black uppercase tracking-[0.2em] text-[10px] hover:bg-neutral-900 transition-all transform hover:scale-105 active:scale-95 shadow-2xl border border-white/10">
                     Get in Touch
                 </button>
             </div>

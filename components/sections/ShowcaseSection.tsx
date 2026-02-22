@@ -25,8 +25,8 @@ export const ShowcaseSection = () => {
                             className="group"
                         >
                             <LiquidGlass
-                                intensity={2.5}
-                                className="aspect-[3/4] rounded-[4rem] mb-10 overflow-hidden relative"
+                                intensity={1.2}
+                                className="aspect-[3/4] rounded-[3rem] mb-10 overflow-hidden relative shadow-lg border border-black/5"
                             >
                                 <div className="absolute inset-0 bg-neutral-950 group-hover:scale-105 transition-transform duration-1000" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-white/5 opacity-40" />
