@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+    --color-brand-red: #ff0000;
+    --color-accent-blue: #0070f3;
+    --color-accent-purple: #7928ca;
+
+    /* Liquid Glass Tokens */
+    --color-glass-bg: light-dark(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4));
+    --color-glass-border: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+    --color-glass-reflection: light-dark(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+    --color-glass-refraction: light-dark(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15));
+
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    --shadow-glass-dark: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+
+    --animate-liquid: liquid 10s ease-in-out infinite;
+    --animate-shimmer: shimmer 3s linear infinite;
+
+    @keyframes liquid {
+
+        0%,
+        100% {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+
+        50% {
+            border-radius: 30% 60% 70% 30% / 50% 60% 30% 60%;
+        }
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -200% 0;
+        }
+
+        100% {
+            background-position: 200% 0;
+        }
+    }
+}
+
+:root {
+    --background: #ffffff;
+    --foreground: #000000;
+    --glass-shadow: var(--shadow-glass);
+}
+
+.dark {
+    --background: #000000;
+    --foreground: #ffffff;
+    --glass-shadow: var(--shadow-glass-dark);
+}
+
+@layer base {
+    body {
+        background-color: var(--background);
+        color: var(--foreground);
+        @apply antialiased overflow-x-hidden transition-colors duration-500;
+        font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    }
+}
+
+@layer components {
+
+    /* Enhanced Liquid Glass with Refraction */
+    .liquid-glass {
+        background: var(--color-glass-bg);
+        backdrop-filter: blur(28px) saturate(180%);
+        -webkit-backdrop-filter: blur(28px) saturate(180%);
+        border: 1px solid var(--color-glass-border);
+        box-shadow: var(--glass-shadow);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Refraction Shine Edge */
+    .liquid-glass::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1px;
+        background: linear-gradient(135deg,
+                var(--color-glass-refraction) 0%,
+                transparent 20%,
+                transparent 80%,
+                var(--color-glass-refraction) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    /* Liquid Reflection Shimmer */
+    .liquid-glass::after {
+        content: "";
+        position: absolute;
+        top: -150%;
+        left: -150%;
+        width: 400%;
+        height: 400%;
+        background: radial-gradient(circle at center,
+                var(--color-glass-reflection) 0%,
+                transparent 20%);
+        opacity: 0.15;
+        pointer-events: none;
+        transition: transform 1s cubic-bezier(0.1, 0.7, 0.1, 1);
+        z-index: 1;
+    }
+
+    .liquid-glass:hover {
+        transform: translateY(-4px) scale(1.01);
+        background: light-dark(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.05));
+        border-color: light-dark(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.2));
+    }
+
+    .liquid-glass:hover::after {
+        transform: translate(25%, 25%);
+    }
+
+    /* Uppercase Buttons and text */
+    .btn-premium {
+        @apply uppercase tracking-[0.2em] font-black text-[10px] px-8 py-4 rounded-full transition-all duration-500;
+    }
+
+    .no-download {
+        -webkit-touch-callout: none;
+        @apply select-none pointer-events-none;
+    }
+
+    /* Grain/Noise Texture Overlay */
+    .grain-overlay {
+        position: fixed;
+        inset: -100%;
+        width: 300%;
+        height: 300%;
+        background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+        opacity: 0.04;
+        pointer-events: none;
+        z-index: 100;
+        animation: noise-move 0.2s steps(4) infinite;
+    }
+
+    @keyframes noise-move {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        10% {
+            transform: translate(-1%, -1%);
+        }
+
+        20% {
+            transform: translate(-2%, 1%);
+        }
+
+        30% {
+            transform: translate(1%, -2%);
+        }
+
+        40% {
+            transform: translate(-1%, 3%);
+        }
+
+        50% {
+            transform: translate(-2%, 1%);
+        }
+
+        60% {
+            transform: translate(3%, -2%);
+        }
+
+        70% {
+            transform: translate(2%, 1%);
+        }
+
+        80% {
+            transform: translate(-3%, 1%);
+        }
+
+        90% {
+            transform: translate(1%, 2%);
+        }
+
+        100% {
+            transform: translate(1%, 1%);
+        }
+    }
+
+    /* Subtle Mesh Gradient Base */
+    .mesh-gradient-bg {
+        background-image:
+            radial-gradient(at 0% 0%, var(--color-accent-blue) 0%, transparent 50%),
+            radial-gradient(at 50% 0%, var(--color-brand-red) 0%, transparent 50%),
+            radial-gradient(at 100% 0%, var(--color-accent-purple) 0%, transparent 50%),
+            radial-gradient(at 0% 100%, var(--color-brand-red) 0%, transparent 50%),
+            radial-gradient(at 50% 100%, var(--color-accent-blue) 0%, transparent 50%),
+            radial-gradient(at 100% 100%, var(--color-accent-purple) 0%, transparent 50%);
+        background-size: 100% 100%;
+        opacity: 0.05;
+        filter: blur(100px);
+    }
+}
+
+/* Custom Scrollbar for Liquid feel */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-glass-border);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-red);
+}
