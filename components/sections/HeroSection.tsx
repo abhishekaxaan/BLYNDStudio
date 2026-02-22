@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { LiquidGlass } from "../ui/LiquidGlass";
 
@@ -36,17 +37,23 @@ export const HeroSection = () => {
                 </p>
 
                 <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-                    <button className="px-14 py-7 rounded-full bg-foreground text-background font-black uppercase tracking-[0.3em] text-[10px] hover:bg-brand-red hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
+                    <Link
+                        href="/contact"
+                        className="px-14 py-7 rounded-full bg-brand-red text-white font-black uppercase tracking-[0.3em] text-[10px] hover:bg-brand-red/80 transition-all transform hover:scale-105 active:scale-95 shadow-[0_20px_40px_rgba(239,68,68,0.3)]"
+                    >
                         Launch Project
-                    </button>
+                    </Link>
                     <LiquidGlass
                         intensity={0.8}
                         className="rounded-full"
                         innerClassName="overflow-hidden shadow-2xl"
                     >
-                        <button className="px-14 py-7 text-foreground font-black uppercase tracking-[0.3em] text-[10px] hover:text-brand-red transition-all transform hover:scale-105 active:scale-95">
+                        <Link
+                            href="/portfolio"
+                            className="px-14 py-7 text-foreground font-black uppercase tracking-[0.3em] text-[10px] hover:text-brand-red transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center"
+                        >
                             View 3D Assets
-                        </button>
+                        </Link>
                     </LiquidGlass>
                 </div>
             </motion.div>

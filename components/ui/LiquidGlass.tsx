@@ -63,7 +63,7 @@ export const LiquidGlass = ({
             onPointerLeave={handlePointerLeave}
             className={cn(
                 "relative group transition-all duration-700",
-                "before:absolute before:inset-0 before:rounded-[inherit] before:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)] dark:before:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]",
+                "before:absolute before:inset-0 before:rounded-[inherit] before:shadow-[0_40px_100px_-20px_rgba(239,68,68,0.15)] dark:before:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]",
                 className
             )}
         >
@@ -73,13 +73,13 @@ export const LiquidGlass = ({
                 <div
                     className={cn(
                         "absolute inset-0 rounded-[inherit]",
-                        "bg-white/[0.12] dark:bg-white/[0.06]",
-                        "border border-white/40 dark:border-white/20"
+                        "bg-brand-red/[0.04] dark:bg-white/[0.03]",
+                        "border border-white/20 dark:border-white/10"
                     )}
                     style={{
                         backdropFilter: lowPower
-                            ? `blur(60px) saturate(200%) brightness(1.1)`
-                            : `blur(80px) saturate(300%) brightness(1.3) contrast(1.1) url(#${filterId})`,
+                            ? `blur(40px) saturate(180%) brightness(1.1)`
+                            : `blur(60px) saturate(220%) brightness(1.2) contrast(1.05) url(#${filterId})`,
                     } as any}
                 />
 
@@ -88,25 +88,23 @@ export const LiquidGlass = ({
                     style={{
                         background: useTransform(
                             [glossX, glossY],
-                            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(255,255,255,0.7), transparent 60%)`
+                            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(255,255,255,0.4), transparent 60%)`
                         )
                     }}
-                    className="absolute inset-0 rounded-[inherit] opacity-100 dark:opacity-70 mix-blend-plus-lighter pointer-events-none"
+                    className="absolute inset-0 rounded-[inherit] opacity-100 dark:opacity-50 mix-blend-overlay pointer-events-none"
                 />
 
                 {/* 3. CRYSTAL RIM */}
                 <div className="absolute inset-0 rounded-[inherit] pointer-events-none">
-                    <div className="absolute inset-x-0 top-0 h-[1.5px] bg-white opacity-100 shadow-[0_1px_15px_rgba(255,255,255,1)]" />
-                    <div className="absolute inset-y-0 left-0 w-[1.5px] bg-gradient-to-b from-white via-white/20 to-transparent opacity-80" />
-                    <div className="absolute inset-0 rounded-[inherit] border-t border-l border-white/50 shadow-[inset_2.5px_2.5px_0px_rgba(255,255,255,0.4)]" />
-                    <div className="absolute inset-x-[5%] bottom-0 h-[1px] bg-white/50 shadow-[0_0_20px_rgba(255,255,255,0.6)]" />
+                    <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                    <div className="absolute inset-0 rounded-[inherit] border-t border-l border-white/10" />
                 </div>
 
-                {/* 4. PRISMATIC DEPTH */}
-                <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-br from-accent-blue/20 via-transparent to-brand-red/20 opacity-40 mix-blend-overlay" />
+                {/* 4. PRISMATIC DEPTH (Subtle Red Tint) */}
+                <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-br from-brand-red/5 via-transparent to-white/5 opacity-40 mix-blend-overlay" />
 
                 {/* 5. MATERIAL NOISE */}
-                <div className="absolute inset-0 rounded-[inherit] opacity-[0.08] dark:opacity-[0.05] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                <div className="absolute inset-0 rounded-[inherit] opacity-[0.04] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
             </div>
 
             {/* Content Layer */}

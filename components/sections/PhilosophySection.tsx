@@ -14,24 +14,14 @@ export const PhilosophySection = () => {
                         className="aspect-[4/5] rounded-[3rem] overflow-hidden"
                     >
                         {/* Visual element representing liquid glass */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-brand-red/20 to-transparent" />
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-white/10 blur-[80px] animate-liquid" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-brand-red/10 via-brand-red/5 to-transparent mix-blend-overlay" />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-red/10 blur-[100px] animate-liquid" />
                         <div className="absolute inset-0 flex items-center justify-center p-12">
                             <span className="text-[12rem] font-bold text-white/5 select-none pointer-events-none tracking-tighter">
                                 B.
                             </span>
                         </div>
                     </LiquidGlass>
-                    {/* Accent element */}
-                    <motion.div
-                        initial={{ rotate: -10 }}
-                        whileHover={{ rotate: 0, scale: 1.1 }}
-                        className="absolute -bottom-10 -right-10 z-20"
-                    >
-                        <LiquidGlass className="w-40 h-40 rounded-full flex items-center justify-center">
-                            <div className="text-brand-red font-black text-2xl">B L Y N D</div>
-                        </LiquidGlass>
-                    </motion.div>
                 </div>
 
                 <div>

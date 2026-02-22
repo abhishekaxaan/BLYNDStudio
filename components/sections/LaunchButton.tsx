@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, useCursor } from "@react-three/drei";
 import * as THREE from "three";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const FloatingElement = ({ position, color, speed = 1, distort = 0.4 }: any) => {
@@ -88,12 +89,15 @@ export const LaunchButton = () => {
                     viewport={{ once: true }}
                     className="relative flex items-center justify-center"
                 >
-                    <button className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-foreground text-background font-black uppercase tracking-[0.3em] text-xs md:text-sm hover:bg-brand-red hover:text-white transition-all duration-700 shadow-2xl flex items-center justify-center group transform active:scale-95 border border-white/10 relative overflow-hidden">
+                    <Link
+                        href="/contact"
+                        className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-brand-red text-white font-black uppercase tracking-[0.3em] text-xs md:text-sm hover:bg-brand-red/90 transition-all duration-700 shadow-[0_40px_100px_rgba(239,68,68,0.4)] flex items-center justify-center group transform active:scale-95 border border-white/10 relative overflow-hidden"
+                    >
                         <span className="relative z-10 text-center">Ready to <br /> <span className="text-3xl md:text-5xl block mt-2">Launch?</span></span>
 
                         {/* Subtle orbital ring */}
                         <div className="absolute inset-0 border border-white/5 rounded-full animate-[spin_20s_linear_infinite]" />
-                    </button>
+                    </Link>
 
                     {/* Badge moved to top-center above button to avoid layout break */}
                     <motion.div

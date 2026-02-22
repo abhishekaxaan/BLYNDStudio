@@ -22,7 +22,7 @@ export const ShowcaseSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.2, duration: 0.8 }}
-                            className="group cursor-none"
+                            className="group"
                         >
                             <LiquidGlass
                                 intensity={2.5}
