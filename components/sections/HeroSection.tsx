@@ -30,7 +30,7 @@ export const HeroSection = () => {
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 className="relative z-10 text-center max-w-6xl mx-auto"
             >
                 {/* Floating Discipline Badges */}

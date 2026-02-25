@@ -67,7 +67,7 @@ export const CapabilitiesTeaser = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-80px" }}
-                            transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
+                            transition={{ duration: 0.4, delay: idx * 0.08, ease: "easeOut" }}
                             className="relative group"
                         >
                             <div className="w-full h-full rounded-[3rem] p-8 md:p-10 bg-[#ebf0f5] shadow-[24px_24px_64px_#d1d9e6,-24px_-24px_64px_#ffffff] border border-white/50 transition-all duration-500 hover:shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff] flex flex-col relative overflow-hidden group">
