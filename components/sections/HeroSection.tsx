@@ -60,11 +60,12 @@ export const HeroSection = () => {
                 {/* CTA Buttons */}
                 <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
                     <div
-                        className="rounded-full bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] group hover:shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff] transition-all overflow-hidden"
+                        className="relative rounded-full bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] group hover:shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff] transition-all overflow-hidden border border-white/40"
                     >
+                        <div className="absolute inset-0 bg-gradient-to-br from-brand-red/10 to-accent-pink/10 pointer-events-none" />
                         <Link
                             href="/contact"
-                            className="px-14 py-7 text-brand-red font-black uppercase tracking-[0.3em] text-[10px] flex items-center justify-center group/btn"
+                            className="relative z-10 px-14 py-7 text-brand-red font-black uppercase tracking-[0.3em] text-[10px] flex items-center justify-center group/btn"
                         >
                             <span className="inline-flex items-center gap-3 group-hover/btn:scale-110 transition-transform duration-500">
                                 <Sparkles className="w-4 h-4 text-brand-red shrink-0" />
@@ -74,13 +75,14 @@ export const HeroSection = () => {
                     </div>
 
                     <div
-                        className="rounded-full bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] group hover:shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff] transition-all overflow-hidden"
+                        className="relative rounded-full bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] group hover:shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff] transition-all overflow-hidden border border-white/40"
                     >
+                        <div className="absolute inset-0 bg-neutral-900/5 pointer-events-none" />
                         <Link
                             href="/portfolio"
-                            className="px-14 py-7 text-neutral-600 font-black uppercase tracking-[0.3em] text-[10px] flex items-center justify-center text-zoom-hover"
+                            className="relative z-10 px-14 py-7 text-neutral-600 font-black uppercase tracking-[0.3em] text-[10px] flex items-center justify-center text-zoom-hover"
                         >
-                            <span>View 3D Assets</span>
+                            <span>Our Portfolio</span>
                         </Link>
                     </div>
                 </div>
