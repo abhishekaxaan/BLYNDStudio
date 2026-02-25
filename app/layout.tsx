@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className="min-h-screen bg-white text-black font-sans">
+            <body className="min-h-screen bg-[#ebf0f5] text-black font-sans">
                 <div className="grain-overlay" />
                 {children}
             </body>

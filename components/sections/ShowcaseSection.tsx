@@ -37,21 +37,19 @@ export const ShowcaseSection = () => {
                             transition={{ duration: 0.8, delay: (idx % 3) * 0.12, ease: "easeOut" }}
                             className="group"
                         >
-                            <div className="h-full rounded-[2.5rem] flex flex-col bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] hover:shadow-transparent transition-all duration-500 group relative">
-                                {/* Inset shadow overlay triggered on hover */}
-                                <div className="absolute inset-0 rounded-[2.5rem] transition-shadow duration-500 pointer-events-none z-30 group-hover:shadow-[inset_8px_8px_16px_#d1d9e6,inset_-8px_-8px_16px_#ffffff]" />
-
-                                <div className="h-64 md:h-80 w-full relative overflow-hidden rounded-t-[2.5rem] z-10">
+                            <div className="h-full rounded-[3rem] p-4 bg-[#ebf0f5] shadow-[24px_24px_64px_#d1d9e6,-24px_-24px_64px_#ffffff] border border-white/50 transition-all duration-500 hover:shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff] flex flex-col group relative">
+                                <div className="h-64 md:h-80 w-full relative overflow-hidden rounded-[2.5rem] z-10 mb-8 shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff] bg-[#e6e9ef]">
                                     <img
                                         src={item.image}
                                         alt={item.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 mix-blend-multiply opacity-90"
                                     />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#ebf0f5]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 </div>
-                                <div className="p-8 md:p-10 flex flex-col flex-grow bg-[#ebf0f5] rounded-b-[2.5rem] z-10">
-                                    <span className="text-brand-red font-bold uppercase tracking-widest text-[10px] block mb-3">{item.label}</span>
-                                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 mb-4">{item.title}</h3>
-                                    <p className="text-neutral-600 text-sm md:text-base leading-relaxed font-medium">
+                                <div className="px-6 pb-8 flex flex-col flex-grow">
+                                    <span className="text-brand-red font-black uppercase tracking-widest text-[10px] block mb-3">{item.label}</span>
+                                    <h3 className="text-2xl md:text-3xl font-black tracking-tight text-neutral-900 mb-4 uppercase">{item.title}</h3>
+                                    <p className="text-neutral-500 text-sm md:text-base leading-relaxed font-light flex-grow">
                                         {item.desc}
                                     </p>
                                 </div>

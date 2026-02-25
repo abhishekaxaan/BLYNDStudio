@@ -35,7 +35,7 @@ export const ProcessSection = () => {
                                 className="h-full"
                             >
                                 <div
-                                    className="p-8 md:p-10 rounded-[3rem] group h-full bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] hover:shadow-[inset_6px_6px_12px_#d1d9e6,inset_-6px_-6px_12px_#ffffff] transition-all duration-300"
+                                    className="p-8 md:p-10 rounded-[3rem] h-full bg-[#ebf0f5] shadow-[24px_24px_64px_#d1d9e6,-24px_-24px_64px_#ffffff] border border-white/50 transition-all duration-500 hover:shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff]"
                                 >
                                     <div className="flex flex-col gap-4 md:gap-6 h-full">
                                         <span className="text-4xl font-black text-brand-red font-sans italic opacity-50">

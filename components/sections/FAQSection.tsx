@@ -30,14 +30,14 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
     return (
         <div className="mb-6">
             <div
-                className="rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] transition-all duration-300"
+                className={`rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-[#ebf0f5] border border-white/50 transition-all duration-500 ${isOpen ? 'shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff]' : 'shadow-[24px_24px_64px_#d1d9e6,-24px_-24px_64px_#ffffff] hover:shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff]'}`}
             >
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="w-full text-left p-6 md:p-8 flex items-center justify-between group transition-all"
                 >
                     <span className="text-base md:text-xl font-bold tracking-tight pr-4 md:pr-8 text-neutral-800">{question}</span>
-                    <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-300 flex-shrink-0 bg-[#ebf0f5] ${isOpen ? "shadow-[inset_3px_3px_6px_#d1d9e6,inset_-3px_-3px_6px_#ffffff] text-brand-red" : "shadow-[5px_5px_10px_#d1d9e6,-5px_-5px_10px_#ffffff] text-neutral-500"}`}>
+                    <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-300 flex-shrink-0 bg-[#ebf0f5] border border-white/40 ${isOpen ? "shadow-[inset_4px_4px_8px_#d1d9e6,inset_-4px_-4px_8px_#ffffff] text-brand-red" : "shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff] text-neutral-500"}`}>
                         {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                     </div>
                 </button>

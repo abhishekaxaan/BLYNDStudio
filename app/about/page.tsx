@@ -9,14 +9,18 @@ import { LiquidGlass } from "@/components/ui/LiquidGlass";
 
 export default function AboutPage() {
     return (
-        <>
+        <div className="bg-[#ebf0f5]">
             <Navbar />
             <main className="relative min-h-screen pt-32 md:pt-48 pb-20 px-6 overflow-hidden">
-                {/* Dynamic Background Depth */}
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 mesh-gradient-bg opacity-[0.03] dark:opacity-[0.07]" />
-                    <div className="absolute bottom-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-foreground/5 blur-[80px] md:blur-[120px] rounded-full animate-liquid opacity-10" />
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:50px_50px] md:bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)]" />
+                {/* Dynamic Global Background Elements */}
+                <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+                    <div className="absolute top-20 left-[10%] w-0 h-0 rounded-full bg-transparent" style={{ boxShadow: "0 0 250px 150px rgba(255,0,0,0.12)" }} />
+                    <div className="absolute top-[40%] right-[5%] w-0 h-0 rounded-full bg-transparent" style={{ boxShadow: "0 0 200px 120px rgba(0,112,243,0.10)" }} />
+                    <div className="absolute bottom-32 left-[30%] w-0 h-0 rounded-full bg-transparent" style={{ boxShadow: "0 0 180px 100px rgba(121,40,202,0.08)" }} />
+                    <div className="absolute top-[60%] left-[60%] w-0 h-0 rounded-full bg-transparent" style={{ boxShadow: "0 0 150px 90px rgba(16,185,129,0.06)" }} />
+
+                    {/* Subtle Square Grid */}
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.08)_1px,transparent_1px)] bg-[size:60px_60px] md:bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_0%,transparent_100%)]" />
                 </div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
@@ -27,7 +31,7 @@ export default function AboutPage() {
                             transition={{ duration: 0.8 }}
                         >
                             <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-6">Our DNA</span>
-                            <h1 className="text-5xl md:text-[8rem] font-black tracking-tighter leading-[0.9] md:leading-[0.85] mb-8 md:mb-12 uppercase">
+                            <h1 className="text-5xl md:text-[7rem] font-black tracking-tighter leading-[0.85] mb-8 md:mb-12 uppercase text-neutral-900">
                                 Visionary <br className="hidden md:block" /> Clarity.
                             </h1>
                             <p className="text-xl md:text-2xl text-neutral-500 font-light leading-relaxed">
@@ -41,12 +45,8 @@ export default function AboutPage() {
                             transition={{ duration: 1, delay: 0.2 }}
                             className="relative"
                         >
-                            <LiquidGlass
-                                intensity={1.2}
-                                className="p-8 md:p-12 rounded-[3rem] md:rounded-[4rem] relative overflow-hidden group shadow-lg"
-                            >
-                                <div className="absolute top-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-brand-red/10 blur-[80px] md:blur-[100px] rounded-full group-hover:bg-brand-red/20 transition-all duration-1000" />
-                                <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-10 tracking-tight">The Multi-Disciplinary Studio.</h2>
+                            <div className="p-8 md:p-12 lg:p-14 rounded-[3.5rem] bg-[#ebf0f5] shadow-[24px_24px_64px_#d1d9e6,-24px_-24px_64px_#ffffff] border border-white/50 transition-all duration-500 hover:shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff] relative group">
+                                <h2 className="text-3xl md:text-4xl font-black mb-6 md:mb-10 tracking-tight uppercase text-neutral-900">The Multi-Disciplinary Studio.</h2>
                                 <div className="space-y-6 md:space-y-8 text-neutral-500 font-light leading-relaxed text-base md:text-lg relative z-10">
                                     <p>
                                         Founded as a sanctuary for high-fidelity digital art, BLYND Studio has evolved into a full-scale multi-disciplinary powerhouse. We don't limit ourselves to a single medium because visionary projects don't exist in a vacuum.
@@ -58,11 +58,11 @@ export default function AboutPage() {
                                         We don't manage social media—we build the brand identities and digital artifacts that make social media management unnecessary because the work speaks for itself.
                                     </p>
                                 </div>
-                            </LiquidGlass>
+                            </div>
                         </motion.div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-24 md:mb-40">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-24 md:mb-40">
                         {[
                             {
                                 tag: "Precision",
@@ -88,25 +88,22 @@ export default function AboutPage() {
                                 transition={{ delay: idx * 0.1 }}
                                 className="relative"
                             >
-                                <LiquidGlass
-                                    intensity={0.8}
-                                    className="p-8 md:p-10 h-full rounded-[2.5rem] md:rounded-[3rem]"
-                                >
-                                    <span className="text-brand-red font-black uppercase tracking-[0.3em] text-[9px] block mb-4">{box.tag}</span>
-                                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 tracking-tight">{box.title}</h3>
+                                <div className="p-8 md:p-10 h-full rounded-[3rem] bg-[#ebf0f5] shadow-[24px_24px_64px_#d1d9e6,-24px_-24px_64px_#ffffff] border border-white/50 transition-all duration-500 hover:shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff]">
+                                    <span className="text-brand-red font-black uppercase tracking-[0.3em] text-[10px] block mb-4">{box.tag}</span>
+                                    <h3 className="text-xl md:text-2xl font-black mb-3 md:mb-4 tracking-tight uppercase text-neutral-900">{box.title}</h3>
                                     <p className="text-neutral-500 font-light text-sm leading-relaxed">{box.desc}</p>
-                                </LiquidGlass>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
 
-                    <div className="border-t border-black/5 pt-20 md:pt-32 mb-20 md:mb-32">
+                    <div className="border-t border-white/40 pt-20 md:pt-32 mb-20 md:mb-32">
                         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 md:gap-20">
                             <div className="max-w-xl">
                                 <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-6">The Studio Ecosystem</span>
-                                <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none mb-6 md:mb-8">
+                                <h1 className="text-4xl md:text-7xl font-black tracking-tighter leading-none mb-6 md:mb-8 uppercase text-neutral-900">
                                     Strategic Focus.
-                                </h2>
+                                </h1>
                                 <p className="text-neutral-500 text-lg md:text-xl font-light leading-relaxed">
                                     We operate in fixed engineering cycles, ensuring every project receives undivided architectural precision. Our multi-disciplinary approach eliminates the friction between creative vision and technical execution.
                                 </p>
@@ -118,9 +115,9 @@ export default function AboutPage() {
                                     { label: "Asset Fidelity", val: "4K PBR" },
                                     { label: "Stack Performance", val: "99+ Lighthouse" }
                                 ].map((stat, i) => (
-                                    <div key={i} className="border-l border-brand-red/20 pl-6 py-4">
-                                        <div className="text-2xl md:text-3xl font-black tracking-tighter mb-1">{stat.val}</div>
-                                        <div className="text-[10px] font-black uppercase tracking-widest text-neutral-400">{stat.label}</div>
+                                    <div key={i} className="bg-[#ebf0f5] p-8 rounded-[2.5rem] shadow-[24px_24px_64px_#d1d9e6,-24px_-24px_64px_#ffffff] border border-white/50 transition-all duration-500 hover:shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff]">
+                                        <div className="text-2xl md:text-3xl font-black tracking-tighter mb-1 text-neutral-900 uppercase">{stat.val}</div>
+                                        <div className="text-[10px] font-black uppercase tracking-widest text-brand-red/60">{stat.label}</div>
                                     </div>
                                 ))}
                             </div>
@@ -130,6 +127,6 @@ export default function AboutPage() {
             </main>
             <LaunchButton />
             <Footer />
-        </>
+        </div>
     );
 }

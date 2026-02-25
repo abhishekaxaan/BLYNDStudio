@@ -6,12 +6,12 @@ import { Layers, Cpu, Box, Share2, Terminal, Layout } from "lucide-react";
 
 
 const stacks = [
-    { name: "Three.js", icon: <Box className="w-5 h-5" />, desc: "High-fidelity 3D WebGL immersion.", gradient: "from-brand-red/20 to-accent-pink/20", iconColor: "text-brand-red" },
-    { name: "WordPress", icon: <Cpu className="w-5 h-5" />, desc: "Scalable, feature-rich ecosystems.", gradient: "from-accent-amber/20 to-brand-red/20", iconColor: "text-accent-amber" },
-    { name: "Flutterflow", icon: <Share2 className="w-5 h-5" />, desc: "Next-gen mobile performance.", gradient: "from-accent-purple/20 to-accent-pink/20", iconColor: "text-accent-purple" },
-    { name: "Webflow", icon: <Layout className="w-5 h-5" />, desc: "Cinematic design-to-code.", gradient: "from-accent-emerald/20 to-accent-blue/20", iconColor: "text-accent-emerald" },
-    { name: "Next.js", icon: <Terminal className="w-5 h-5" />, desc: "Ultra-fast custom architectures.", gradient: "from-accent-blue/20 to-accent-purple/20", iconColor: "text-accent-blue" },
-    { name: "Framer", icon: <Layers className="w-5 h-5" />, desc: "High-end motion interaction.", gradient: "from-accent-pink/20 to-accent-purple/20", iconColor: "text-accent-pink" },
+    { name: "Three.js", icon: <Box className="w-6 h-6" />, desc: "High-fidelity 3D WebGL immersion.", gradient: "from-brand-red/10 to-accent-pink/10", iconColor: "text-brand-red" },
+    { name: "WordPress", icon: <Cpu className="w-6 h-6" />, desc: "Scalable, feature-rich ecosystems.", gradient: "from-accent-amber/10 to-brand-red/10", iconColor: "text-accent-amber" },
+    { name: "Flutterflow", icon: <Share2 className="w-6 h-6" />, desc: "Next-gen mobile performance.", gradient: "from-accent-purple/10 to-accent-pink/10", iconColor: "text-accent-purple" },
+    { name: "Webflow", icon: <Layout className="w-6 h-6" />, desc: "Cinematic design-to-code.", gradient: "from-accent-emerald/10 to-accent-blue/10", iconColor: "text-accent-emerald" },
+    { name: "Next.js", icon: <Terminal className="w-6 h-6" />, desc: "Ultra-fast custom architectures.", gradient: "from-accent-blue/10 to-accent-purple/10", iconColor: "text-accent-blue" },
+    { name: "Framer", icon: <Layers className="w-6 h-6" />, desc: "High-end motion interaction.", gradient: "from-accent-pink/10 to-accent-purple/10", iconColor: "text-accent-pink" },
 ];
 
 export const TechMatrix = () => {
@@ -43,21 +43,20 @@ export const TechMatrix = () => {
                             key={idx}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            whileHover={{ y: -8 }}
                             viewport={{ once: true, margin: "-80px" }}
                             transition={{ duration: 0.8, delay: idx * 0.12, ease: "easeOut" }}
                             className="h-full group"
                         >
                             <div
-                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] h-full bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] hover:shadow-[inset_6px_6px_12px_#d1d9e6,inset_-6px_-6px_12px_#ffffff] transition-all duration-300"
+                                className="p-8 md:p-10 rounded-[3rem] h-full bg-[#ebf0f5] shadow-[24px_24px_64px_#d1d9e6,-24px_-24px_64px_#ffffff] border border-white/50 transition-all duration-500 hover:shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff] flex flex-col"
                             >
-                                <div className="flex flex-col items-start gap-4 md:gap-6">
-                                    <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-br ${stack.gradient} flex items-center justify-center ${stack.iconColor} group-hover:scale-110 transition-all duration-500`}>
+                                <div className="flex flex-col items-start gap-4 md:gap-6 h-full">
+                                    <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${stack.gradient} shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff] flex items-center justify-center ${stack.iconColor} transition-all duration-500 border border-white/40`}>
                                         {stack.icon}
                                     </div>
-                                    <div>
-                                        <h3 className="text-base md:text-xl font-bold mb-2 md:mb-3 tracking-tight uppercase text-neutral-800">{stack.name}</h3>
-                                        <p className="text-neutral-500 text-xs md:text-sm leading-relaxed font-light hidden md:block">
+                                    <div className="flex flex-col flex-grow">
+                                        <h3 className="text-lg md:text-xl font-black mb-2 md:mb-3 tracking-tight uppercase text-neutral-900">{stack.name}</h3>
+                                        <p className="text-neutral-500 text-sm md:text-base leading-relaxed font-light flex-grow">
                                             {stack.desc}
                                         </p>
                                     </div>

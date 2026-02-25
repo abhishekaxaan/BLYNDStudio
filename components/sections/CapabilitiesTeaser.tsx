@@ -70,17 +70,17 @@ export const CapabilitiesTeaser = () => {
                             transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
                             className="relative group"
                         >
-                            <div className="h-full rounded-[2rem] md:rounded-[2.5rem] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] hover:shadow-[inset_6px_6px_12px_#d1d9e6,inset_-6px_-6px_12px_#ffffff] transition-all duration-300 bg-[#ebf0f5] p-8 md:p-10 flex flex-col relative overflow-hidden">
-                                <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${cap.gradient} flex items-center justify-center ${cap.iconColor} group-hover:scale-110 transition-all duration-300 mb-8 border border-neutral-100 shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff]`}>
+                            <div className="w-full h-full rounded-[3rem] p-8 md:p-10 bg-[#ebf0f5] shadow-[24px_24px_64px_#d1d9e6,-24px_-24px_64px_#ffffff] border border-white/50 transition-all duration-500 hover:shadow-[inset_12px_12px_24px_#d1d9e6,inset_-12px_-12px_24px_#ffffff] flex flex-col relative overflow-hidden group">
+                                <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${cap.gradient} shadow-[6px_6px_12px_#d1d9e6,-6px_-6px_12px_#ffffff] flex items-center justify-center ${cap.iconColor} transition-all duration-300 mb-8 border border-white/40`}>
                                     {cap.icon}
                                 </div>
-                                <h3 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-neutral-900">{cap.title}</h3>
-                                <p className="text-neutral-600 md:text-lg leading-relaxed font-medium mb-8 flex-grow">
+                                <h3 className="text-2xl md:text-3xl font-black mb-4 tracking-tight text-neutral-900 uppercase">{cap.title}</h3>
+                                <p className="text-neutral-500 md:text-lg leading-relaxed font-light mb-8 flex-grow">
                                     {cap.desc}
                                 </p>
-                                <div className="flex flex-wrap gap-2 mt-auto">
+                                <div className="flex flex-wrap gap-4 md:gap-5 mt-auto pt-6 border-t border-white/40">
                                     {cap.tools.map((tool, i) => (
-                                        <span key={i} className="px-4 py-1.5 bg-neutral-100 hover:bg-neutral-200 transition-colors border border-neutral-200/80 rounded-full text-[10px] md:text-[11px] font-bold text-neutral-700 tracking-wider uppercase">
+                                        <span key={i} className="px-4 py-2 rounded-xl bg-[#ebf0f5] shadow-[4px_4px_8px_#d1d9e6,-4px_-4px_8px_#ffffff] text-[9px] md:text-[10px] font-black uppercase tracking-widest text-neutral-600 border border-white/20">
                                             {tool}
                                         </span>
                                     ))}
