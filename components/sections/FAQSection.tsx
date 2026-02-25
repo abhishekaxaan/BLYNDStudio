@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import { LiquidGlass } from "../ui/LiquidGlass";
+
 
 const faqs = [
     {
@@ -28,22 +28,20 @@ const FAQItem = ({ question, answer, index }: { question: string; answer: string
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="mb-4">
-            <LiquidGlass
-                intensity={1.2}
-                interactive={true}
-                className="rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-lg"
+        <div className="mb-6">
+            <div
+                className="rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] transition-all duration-300"
             >
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="w-full text-left p-6 md:p-8 flex items-center justify-between group transition-all"
                 >
-                    <span className="text-base md:text-xl font-bold tracking-tight pr-4 md:pr-8">{question}</span>
-                    <div className={"w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-colors flex-shrink-0 " + (isOpen ? "bg-brand-red text-white" : "bg-white/5 text-neutral-500")}>
+                    <span className="text-base md:text-xl font-bold tracking-tight pr-4 md:pr-8 text-neutral-800">{question}</span>
+                    <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-300 flex-shrink-0 bg-[#ebf0f5] ${isOpen ? "shadow-[inset_3px_3px_6px_#d1d9e6,inset_-3px_-3px_6px_#ffffff] text-brand-red" : "shadow-[5px_5px_10px_#d1d9e6,-5px_-5px_10px_#ffffff] text-neutral-500"}`}>
                         {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                     </div>
                 </button>
-            </LiquidGlass>
+            </div>
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -81,3 +79,4 @@ export const FAQSection = () => {
         </section>
     );
 };
+

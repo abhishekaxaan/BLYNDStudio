@@ -8,8 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 import { LiquidGlass } from "@/components/ui/LiquidGlass";
 
-// Assuming 12 images for now as a default sequence. 
-const imageCount = 12;
+// Scaled to match the 50 images provided in the public folder.
+const imageCount = 50;
 const images = Array.from({ length: imageCount }, (_, i) => `/portfolio/${i + 1}.jpg`);
 
 const PortfolioItem = ({ src, index, onClick }: { src: string; index: number; onClick: () => void }) => {
@@ -22,39 +22,52 @@ const PortfolioItem = ({ src, index, onClick }: { src: string; index: number; on
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="relative group cursor-pointer"
+            transition={{ delay: index * 0.05 }}
+            className="relative group cursor-pointer w-full max-w-5xl mx-auto px-4 md:px-0"
             onClick={onClick}
-            onContextMenu={(e) => e.preventDefault()}
         >
-            <LiquidGlass
-                intensity={0.5}
-                className="aspect-[3/2] rounded-[2rem] overflow-hidden relative"
-            >
-                {/* Real Image - protected */}
-                <img
-                    src={src}
-                    alt={`Portfolio ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none"
-                    draggable={false}
-                    onError={() => setError(true)}
-                />
+            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-black/5 bg-white/5 backdrop-blur-sm transition-all duration-500 group-hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)]">
+                <LiquidGlass
+                    intensity={0.8}
+                    className="w-full h-auto"
+                >
+                    <div className="relative w-full h-full">
+                        {/* Real Image */}
+                        <img
+                            src={src}
+                            alt={`Blynd Studio Portfolio - Piece ${index + 1}`}
+                            className="w-full h-auto object-contain transition-transform duration-1000 group-hover:scale-[1.02] select-none pointer-events-none block"
+                            draggable={false}
+                            onError={() => setError(true)}
+                        />
 
-                {/* Protection Overlay */}
-                <div className="absolute inset-0 bg-transparent z-10" />
+                        {/* High-security Transparent Overlay */}
+                        <div
+                            className="absolute inset-0 bg-transparent z-[15] select-none touch-none"
+                            onContextMenu={(e) => e.preventDefault()}
+                        />
 
-                {/* UI Overlay */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm z-20">
-                    <ZoomIn className="text-white w-8 h-8" />
-                </div>
+                        {/* Hover UI Reveal */}
+                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px] z-20">
+                            <div className="p-4 rounded-full bg-white/10 border border-white/20 backdrop-blur-md">
+                                <ZoomIn className="text-white w-6 h-6" strokeWidth={1.5} />
+                            </div>
+                        </div>
 
-                {/* Index Label */}
-                <div className="absolute bottom-6 left-6 z-30">
-                    <span className="text-[10px] font-black tracking-[0.3em] uppercase text-white/50">
-                        SEQ / {String(index + 1).padStart(3, "0")}
-                    </span>
-                </div>
-            </LiquidGlass>
+                        {/* Metadata Tag */}
+                        <div className="absolute bottom-8 left-8 z-30">
+                            <div className="flex flex-col gap-1">
+                                <span className="text-[9px] font-black tracking-[0.4em] uppercase text-white/40">
+                                    ASSET TYPE / [PV.SC]
+                                </span>
+                                <span className="text-[10px] font-black tracking-[0.2em] uppercase text-white/80">
+                                    SEQ_{String(index + 1).padStart(3, "0")}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </LiquidGlass>
+            </div>
         </motion.div>
     );
 };
@@ -81,8 +94,18 @@ export default function Portfolio() {
             if (e.key === "ArrowLeft") prevImage();
             if (e.key === "Escape") setSelectedImage(null);
         };
+
+        const preventDefault = (e: MouseEvent) => {
+            if (e.type === 'contextmenu') e.preventDefault();
+        };
+
         window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
+        window.addEventListener("contextmenu", preventDefault);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+            window.removeEventListener("contextmenu", preventDefault);
+        };
     }, [selectedImage]);
 
     return (
@@ -111,7 +134,7 @@ export default function Portfolio() {
                         </p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                    <div className="flex flex-col gap-12 md:gap-24">
                         {images.map((src, idx) => (
                             <PortfolioItem
                                 key={idx}
@@ -131,54 +154,87 @@ export default function Portfolio() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-10"
+                        className="fixed inset-0 z-[100] bg-black/98 backdrop-blur-3xl flex items-center justify-center p-4 md:p-10"
                         onContextMenu={(e) => e.preventDefault()}
                     >
+                        {/* Close Button */}
                         <button
-                            className="absolute top-10 right-10 text-white/50 hover:text-white transition-colors z-[110]"
+                            className="absolute top-6 right-6 md:top-10 md:right-10 text-white/40 hover:text-white transition-all hover:scale-110 z-[110] p-2"
                             onClick={() => setSelectedImage(null)}
+                            aria-label="Close Lightbox"
                         >
-                            <X size={40} strokeWidth={1} />
+                            <X size={32} strokeWidth={1.5} />
                         </button>
 
-                        <button
-                            className="absolute left-4 md:left-10 text-white/20 hover:text-white transition-colors z-[110]"
-                            onClick={prevImage}
-                        >
-                            <ChevronLeft size={60} strokeWidth={1} />
-                        </button>
-
-                        <button
-                            className="absolute right-4 md:right-10 text-white/20 hover:text-white transition-colors z-[110]"
-                            onClick={nextImage}
-                        >
-                            <ChevronRight size={60} strokeWidth={1} />
-                        </button>
-
-                        <div className="relative w-full h-full flex items-center justify-center">
-                            <motion.div
-                                key={selectedImage}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                                className="relative max-w-full max-h-full aspect-[3/2] rounded-[2rem] overflow-hidden"
+                        {/* Navigation Controls */}
+                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-10 pointer-events-none z-[110]">
+                            <button
+                                className="text-white/20 hover:text-white transition-all hover:scale-110 pointer-events-auto p-2"
+                                onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                                aria-label="Previous Image"
                             >
-                                <LiquidGlass intensity={2.5} className="w-full h-full">
-                                    <img
-                                        src={images[selectedImage]}
-                                        alt="Zoomed View"
-                                        className="w-full h-full object-contain select-none pointer-events-none"
-                                        draggable={false}
-                                    />
-                                    {/* Anti-download Transparent Overlay */}
-                                    <div className="absolute inset-0 bg-transparent z-[105]" />
-                                </LiquidGlass>
-                            </motion.div>
+                                <ChevronLeft size={48} strokeWidth={1} />
+                            </button>
+
+                            <button
+                                className="text-white/20 hover:text-white transition-all hover:scale-110 pointer-events-auto p-2"
+                                onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                                aria-label="Next Image"
+                            >
+                                <ChevronRight size={48} strokeWidth={1} />
+                            </button>
                         </div>
 
-                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30 text-[10px] uppercase font-black tracking-[0.5em] text-center px-6">
-                            IMAGE {selectedImage + 1} / {imageCount} — BLYND STUDIO PROTECTED ASSET
+                        {/* Main Image Container */}
+                        <div className="relative w-full h-full flex items-center justify-center pointer-events-none">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={selectedImage}
+                                    initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 1.05, y: -10 }}
+                                    transition={{
+                                        type: "spring",
+                                        damping: 30,
+                                        stiffness: 300,
+                                        opacity: { duration: 0.2 }
+                                    }}
+                                    className="relative max-w-full max-h-[85vh] rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border border-white/5 pointer-events-auto"
+                                >
+                                    <LiquidGlass intensity={3} className="w-full h-full bg-black/90">
+                                        <div className="relative w-full h-full flex items-center justify-center">
+                                            <img
+                                                src={images[selectedImage]}
+                                                alt={`Blynd Studio Portfolio - Asset ${selectedImage + 1}`}
+                                                className="max-w-full max-h-[85vh] w-auto h-auto object-contain select-none pointer-events-none block"
+                                                draggable={false}
+                                            />
+                                            {/* High-security Transparent Overlay */}
+                                            <div
+                                                className="absolute inset-0 bg-transparent z-[105] select-none"
+                                                onContextMenu={(e) => e.preventDefault()}
+                                            />
+                                        </div>
+                                    </LiquidGlass>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
+
+                        {/* Metadata Footer */}
+                        <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 w-full text-center px-6">
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="flex flex-col items-center gap-2"
+                            >
+                                <span className="text-white/40 text-[9px] md:text-[10px] uppercase font-black tracking-[0.6em]">
+                                    GALLERY / SEQUENCE / {String(selectedImage + 1).padStart(3, "0")}
+                                </span>
+                                <div className="h-px w-8 bg-brand-red/30" />
+                                <span className="text-white/20 text-[8px] uppercase font-medium tracking-[0.2em] max-w-[200px] md:max-w-none">
+                                    Proprietary Asset — BLYND STUDIO Visual Chronicle © 2024
+                                </span>
+                            </motion.div>
                         </div>
                     </motion.div>
                 )}

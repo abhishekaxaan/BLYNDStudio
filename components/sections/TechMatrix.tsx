@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Layers, Cpu, Box, Share2, Terminal, Layout } from "lucide-react";
-import { LiquidGlass } from "../ui/LiquidGlass";
+
 
 const stacks = [
     { name: "Three.js", icon: <Box className="w-5 h-5" />, desc: "High-fidelity 3D WebGL immersion.", gradient: "from-brand-red/20 to-accent-pink/20", iconColor: "text-brand-red" },
@@ -48,21 +48,21 @@ export const TechMatrix = () => {
                             transition={{ duration: 0.8, delay: idx * 0.12, ease: "easeOut" }}
                             className="h-full group"
                         >
-                            <LiquidGlass
-                                intensity={1.2}
-                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] shadow-lg h-full"
-                                innerClassName="flex flex-col items-start gap-4 md:gap-6"
+                            <div
+                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] h-full bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] hover:shadow-[inset_6px_6px_12px_#d1d9e6,inset_-6px_-6px_12px_#ffffff] transition-all duration-300"
                             >
-                                <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-br ${stack.gradient} flex items-center justify-center ${stack.iconColor} group-hover:scale-110 transition-all duration-500`}>
-                                    {stack.icon}
+                                <div className="flex flex-col items-start gap-4 md:gap-6">
+                                    <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-br ${stack.gradient} flex items-center justify-center ${stack.iconColor} group-hover:scale-110 transition-all duration-500`}>
+                                        {stack.icon}
+                                    </div>
+                                    <div>
+                                        <h3 className="text-base md:text-xl font-bold mb-2 md:mb-3 tracking-tight uppercase text-neutral-800">{stack.name}</h3>
+                                        <p className="text-neutral-500 text-xs md:text-sm leading-relaxed font-light hidden md:block">
+                                            {stack.desc}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h3 className="text-base md:text-xl font-bold mb-2 md:mb-3 tracking-tight uppercase">{stack.name}</h3>
-                                    <p className="text-neutral-500 text-xs md:text-sm leading-relaxed font-light hidden md:block">
-                                        {stack.desc}
-                                    </p>
-                                </div>
-                            </LiquidGlass>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
@@ -70,3 +70,4 @@ export const TechMatrix = () => {
         </section>
     );
 };
+

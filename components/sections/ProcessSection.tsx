@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { LiquidGlass } from "../ui/LiquidGlass";
+
 
 const steps = [
     { id: "01", title: "Conceptual Blueprint", desc: "We deconstruct your vision into technical and artistic requirements, from character arcs to user flows." },
@@ -30,33 +30,27 @@ export const ProcessSection = () => {
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                whileHover={{ y: -10 }}
                                 viewport={{ once: true, margin: "-80px" }}
                                 transition={{ duration: 0.8, delay: idx * 0.12, ease: "easeOut" }}
                                 className="h-full"
                             >
-                                <LiquidGlass
-                                    intensity={1.2}
-                                    className="p-8 md:p-10 rounded-[3rem] group h-full shadow-lg"
-                                    innerClassName="flex flex-col gap-4 md:gap-6"
+                                <div
+                                    className="p-8 md:p-10 rounded-[3rem] group h-full bg-[#ebf0f5] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] hover:shadow-[inset_6px_6px_12px_#d1d9e6,inset_-6px_-6px_12px_#ffffff] transition-all duration-300"
                                 >
-                                    <span className="text-4xl font-black text-brand-red font-sans italic opacity-50">
-                                        {step.id}
-                                    </span>
-                                    <div className="flex flex-col flex-grow">
-                                        <h3 className="text-xl font-bold tracking-tight uppercase tracking-[0.1em] text-foreground">
-                                            {step.title}
-                                        </h3>
-                                        <p className="text-neutral-500 text-sm leading-relaxed font-light flex-grow">
-                                            {step.desc}
-                                        </p>
+                                    <div className="flex flex-col gap-4 md:gap-6 h-full">
+                                        <span className="text-4xl font-black text-brand-red font-sans italic opacity-50">
+                                            {step.id}
+                                        </span>
+                                        <div className="flex flex-col flex-grow">
+                                            <h3 className="text-xl font-bold tracking-tight uppercase tracking-[0.1em] text-neutral-800">
+                                                {step.title}
+                                            </h3>
+                                            <p className="text-neutral-500 text-sm leading-relaxed font-light flex-grow">
+                                                {step.desc}
+                                            </p>
+                                        </div>
                                     </div>
-
-                                    {/* Subtle Progress Indicator */}
-                                    <div className="w-12 h-1 bg-brand-red/10 rounded-full group-hover:w-full transition-all duration-700">
-                                        <div className="h-full bg-brand-red w-0 group-hover:w-full transition-all duration-1000 delay-100" />
-                                    </div>
-                                </LiquidGlass>
+                                </div>
                             </motion.div>
                         </div>
                     ))}
@@ -65,3 +59,4 @@ export const ProcessSection = () => {
         </section>
     );
 };
+

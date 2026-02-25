@@ -14,11 +14,18 @@ export const Footer = () => {
 
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
                 <div className="col-span-1 md:col-span-2">
-                    <Link href="/" className="font-bold tracking-tighter text-3xl text-white">
-                        BLYND<span className="text-brand-red">.</span>
+                    <Link href="/" className="inline-block mb-6">
+                        <img
+                            src="/blynd_logo.png"
+                            alt="Blynd Studio Logo"
+                            className="h-20 w-auto object-contain"
+                        />
                     </Link>
-                    <p className="mt-6 text-neutral-300 max-w-sm leading-relaxed">
-                        Reimagining the intersection of high-end design and impactful marketing strategies for the next generation of brands.
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+                        Ready to break the atmosphere?
+                    </h3>
+                    <p className="text-neutral-300 max-w-sm leading-relaxed mb-6">
+                        Whether you need a bespoke Next.js platform or a hyper-realistic 3D brand reveal, Blynd Studio is your technical partner in creative excellence.
                     </p>
                 </div>
 

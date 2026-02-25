@@ -35,13 +35,14 @@ export const Navbar = () => {
                     className="rounded-[2.5rem] shadow-lg border border-black/5 bg-white/200 backdrop-blur-sm"
                     innerClassName="flex items-center justify-between px-6 md:px-12 py-5 rounded-[2.5rem] relative z-20"
                 >
-                    <Link href="/" className="flex items-center gap-3 group shrink-0">
-                        <div className="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white font-black text-xs group-hover:scale-110 transition-transform">
-                            B
+                    <Link href="/" className="flex items-center group shrink-0">
+                        <div className="relative w-24 h-12 group-hover:scale-105 transition-transform duration-500">
+                            <img
+                                src="/blynd_logo.png"
+                                alt="Blynd Studio Logo"
+                                className="w-full h-full object-contain filter invert dark:invert-0"
+                            />
                         </div>
-                        <span className="font-black tracking-[-0.05em] text-xl uppercase whitespace-nowrap">
-                            BLYND<span className="text-brand-red">.</span>
-                        </span>
                     </Link>
 
                     {/* Desktop Nav */}

@@ -30,13 +30,13 @@ export const EcosystemSectionNew = () => {
                     className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8"
                 >
                     <div className="max-w-2xl">
-                        <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-6">Future Stack</span>
+                        <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-6">Technical Edge & Philosophy</span>
                         <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none uppercase">
-                            The Liquid <br /> Universe.
+                            AI-Augmented <br /> Craftsmanship.
                         </h2>
                     </div>
                     <p className="text-neutral-500 max-w-sm mb-4 leading-relaxed font-light text-base md:text-lg">
-                        A precise selection of state-of-the-art tools and frameworks used to build visionary artifacts.
+                        Human-led. AI-powered. We leverage bleeding-edge tools not to replace creativity, but to accelerate it. The future of content is here.
                     </p>
                 </motion.div>
 

@@ -2,37 +2,41 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Sword, Globe, Smartphone, Palette } from "lucide-react";
-import { LiquidGlass } from "../ui/LiquidGlass";
+import { Sword, Globe, Smartphone, Palette, Video, Cpu, Share2, Target, Box, Fingerprint } from "lucide-react";
+
 
 const capabilities = [
     {
-        icon: <Sword className="w-6 h-6" />,
-        title: "3D Art & Assets",
-        desc: "Game-ready 3D modeling for characters, legendary weapons, and immersive environments.",
-        gradient: "from-brand-red/20 to-accent-pink/20",
-        iconColor: "text-brand-red"
-    },
-    {
         icon: <Globe className="w-6 h-6" />,
-        title: "Web Ecosystems",
-        desc: "Strategic development across WordPress, Webflow, and custom code frameworks.",
-        gradient: "from-accent-blue/20 to-accent-purple/20",
-        iconColor: "text-accent-blue"
-    },
-    {
-        icon: <Smartphone className="w-6 h-6" />,
-        title: "Mobile App Dev",
-        desc: "Premium iOS and Android solutions built with state-of-the-art low-code builders.",
-        gradient: "from-accent-purple/20 to-accent-emerald/20",
-        iconColor: "text-accent-purple"
+        title: "Digital Presence & Platforms",
+        desc: "High-performance web architecture and immersive mobile experiences.",
+        gradient: "from-accent-blue/10 to-accent-purple/10",
+        iconColor: "text-accent-blue",
+        tools: ["Web Design", "App Development", "Next.js", "Webflow"]
     },
     {
         icon: <Palette className="w-6 h-6" />,
-        title: "Brand Identity",
-        desc: "Visual storytelling through logo design, motion graphics, and video editing.",
-        gradient: "from-accent-amber/20 to-accent-pink/20",
-        iconColor: "text-accent-amber"
+        title: "Brand Ecosystem & Identity",
+        desc: "Establishing the cohesive visual laws and immortal marks of your brand.",
+        gradient: "from-brand-red/10 to-accent-pink/10",
+        iconColor: "text-brand-red",
+        tools: ["Logo Design", "Brand Identity", "Visual DNA"]
+    },
+    {
+        icon: <Sword className="w-6 h-6" />,
+        title: "3D Worlds & Cinematic Motion",
+        desc: "Simulating reality with high-poly models, environments, and motion graphics.",
+        gradient: "from-accent-emerald/10 to-accent-blue/10",
+        iconColor: "text-accent-emerald",
+        tools: ["3D Game Models", "3D Video Ads", "Video Editing"]
+    },
+    {
+        icon: <Smartphone className="w-6 h-6" />,
+        title: "AI & Algorithmic Growth",
+        desc: "Human-led, AI-powered content workflows scaling your audience engagement.",
+        gradient: "from-accent-purple/10 to-accent-pink/10",
+        iconColor: "text-accent-purple",
+        tools: ["AI Content Creation", "Social Media Content", "Social Planning"]
     },
 ];
 
@@ -46,42 +50,42 @@ export const CapabilitiesTeaser = () => {
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8">
                     <div className="max-w-xl">
-                        <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-4">Our Expertise</span>
+                        <span className="text-brand-red font-black uppercase tracking-[0.4em] text-[10px] block mb-4">The Scorch Sequence</span>
                         <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none uppercase">
-                            Capabilities that <br /> define impact.
+                            Core Service <br /> Hierarchy.
                         </h2>
                     </div>
                     <p className="text-neutral-500 max-w-sm mb-4 leading-relaxed font-light text-base md:text-lg">
-                        We build and launch high-performance digital artifacts, from game assets to mobile ecosystems.
+                        We don’t just build pages; we build digital worlds. High-end aesthetics meet flawless execution.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {capabilities.map((cap, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            whileHover={{ y: -10 }}
                             viewport={{ once: true, margin: "-80px" }}
-                            transition={{ duration: 0.8, delay: idx * 0.12, ease: "easeOut" }}
-                            className="relative"
+                            transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
+                            className="relative group"
                         >
-                            <LiquidGlass
-                                intensity={1.2}
-                                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] shadow-lg h-full"
-                                innerClassName="flex flex-col gap-4 md:gap-6"
-                            >
-                                <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br ${cap.gradient} flex items-center justify-center ${cap.iconColor} group-hover:scale-110 transition-all duration-500`}>
+                            <div className="h-full rounded-[2rem] md:rounded-[2.5rem] shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff] hover:shadow-[inset_6px_6px_12px_#d1d9e6,inset_-6px_-6px_12px_#ffffff] transition-all duration-300 bg-[#ebf0f5] p-8 md:p-10 flex flex-col relative overflow-hidden">
+                                <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${cap.gradient} flex items-center justify-center ${cap.iconColor} group-hover:scale-110 transition-all duration-300 mb-8 border border-neutral-100 shadow-[10px_10px_20px_#d1d9e6,-10px_-10px_20px_#ffffff]`}>
                                     {cap.icon}
                                 </div>
-                                <div>
-                                    <h3 className="text-base md:text-xl font-bold mb-2 md:mb-4 tracking-tight uppercase">{cap.title}</h3>
-                                    <p className="text-neutral-500 text-xs md:text-sm leading-relaxed font-light">
-                                        {cap.desc}
-                                    </p>
+                                <h3 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-neutral-900">{cap.title}</h3>
+                                <p className="text-neutral-600 md:text-lg leading-relaxed font-medium mb-8 flex-grow">
+                                    {cap.desc}
+                                </p>
+                                <div className="flex flex-wrap gap-2 mt-auto">
+                                    {cap.tools.map((tool, i) => (
+                                        <span key={i} className="px-4 py-1.5 bg-neutral-100 hover:bg-neutral-200 transition-colors border border-neutral-200/80 rounded-full text-[10px] md:text-[11px] font-bold text-neutral-700 tracking-wider uppercase">
+                                            {tool}
+                                        </span>
+                                    ))}
                                 </div>
-                            </LiquidGlass>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
@@ -89,3 +93,4 @@ export const CapabilitiesTeaser = () => {
         </section>
     );
 };
+
